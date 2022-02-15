@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags: []
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - Ground
+  - Platforms
+  - Ladders
+  - Player Body
+  - Enemy Body
+  - Checkers
+  - Player Hitbox
+  - Target
+  - Player Damage
+  - Enemy Damage
+  - Player Detection
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: BackGround
+    uniqueID: 1973520495
+    locked: 0
+  - name: Hazards
+    uniqueID: 3756581121
+    locked: 0
+  - name: 'Enemies 1 '
+    uniqueID: 2123146055
+    locked: 0
+  - name: Ground
+    uniqueID: 169157269
+    locked: 0
+  - name: Ladders
+    uniqueID: 3059814225
+    locked: 0
+  - name: Interactives
+    uniqueID: 3211540323
+    locked: 0
+  - name: Props
+    uniqueID: 3759672199
+    locked: 0
+  - name: Enemies 2
+    uniqueID: 4257867515
+    locked: 0
+  - name: Effects 1
+    uniqueID: 3638145841
+    locked: 0
+  - name: Player
+    uniqueID: 1626216865
+    locked: 0
+  - name: Items
+    uniqueID: 3131037407
+    locked: 0
+  - name: Effects 2
+    uniqueID: 2049180681
+    locked: 0
+  - name: Overlay
+    uniqueID: 248590039
+    locked: 0

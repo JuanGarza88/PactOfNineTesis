@@ -1,0 +1,479 @@
+fileFormatVersion: 2
+guid: 1bf912ff1e79a26408faa48f7fb59282
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3924277098681685666
+    second: Windows 2_0
+  - first:
+      213: 8517099955515456955
+    second: Windows 2_1
+  - first:
+      213: -6431814066321185320
+    second: Windows 2_2
+  - first:
+      213: 3663589516978615774
+    second: Windows 2_3
+  - first:
+      213: 4773137837671347975
+    second: Windows 2_4
+  - first:
+      213: 93685304841121556
+    second: Windows 2_5
+  - first:
+      213: -812314612342345974
+    second: Windows 2_6
+  - first:
+      213: -3109090886936121902
+    second: Windows 2_7
+  - first:
+      213: 306802582652272520
+    second: Windows 2_8
+  - first:
+      213: -2100540992299888985
+    second: Windows 2_9
+  - first:
+      213: 220517424959299143
+    second: Windows 2_10
+  - first:
+      213: 3773715275609222615
+    second: Windows 2_11
+  - first:
+      213: 3949222336513636177
+    second: Windows 2_12
+  - first:
+      213: 7936569027561552020
+    second: Windows 2_13
+  - first:
+      213: 664341491107652309
+    second: Windows 2_14
+  - first:
+      213: 4434019697143911549
+    second: Windows 2_15
+  - first:
+      213: -1409381658181040920
+    second: Windows 2_16
+  - first:
+      213: 6820400341237550687
+    second: Windows 2_17
+  - first:
+      213: -5197262991384306186
+    second: Windows 2_18
+  - first:
+      213: 7658992818019575857
+    second: Windows 2_19
+  - first:
+      213: -8569010551552922504
+    second: Windows 2_20
+  - first:
+      213: -981793647549549015
+    second: Windows 2_21
+  - first:
+      213: 8016743200695327358
+    second: Windows 2_22
+  - first:
+      213: 3840967545358122968
+    second: Windows 2_23
+  - first:
+      213: 6312055181908453459
+    second: Windows 2_24
+  - first:
+      213: -5022530065705044613
+    second: Windows 2_25
+  - first:
+      213: 6416676702920387295
+    second: Windows 2_26
+  - first:
+      213: -2488674924727044269
+    second: Windows 2_27
+  - first:
+      213: -5026333144721547316
+    second: Windows 2_28
+  - first:
+      213: -8145086479270243005
+    second: Windows 2_29
+  - first:
+      213: 1916123879361623645
+    second: Windows 2_30
+  - first:
+      213: 7081703426575713369
+    second: Windows 2_31
+  - first:
+      213: -5999382475589863139
+    second: Windows 2_32
+  - first:
+      213: -5729408553437929412
+    second: Windows 2_33
+  - first:
+      213: 6519249495875853099
+    second: Windows 2_34
+  - first:
+      213: -1145316958597893726
+    second: Windows 2_35
+  - first:
+      213: 1681648345948154330
+    second: Windows 2_36
+  - first:
+      213: 6560846048087107929
+    second: Windows 2_37
+  - first:
+      213: -2910157435301859065
+    second: Windows 2_38
+  - first:
+      213: 6321353056152278931
+    second: Windows 2_39
+  - first:
+      213: -4116560744716750908
+    second: Windows 2_40
+  - first:
+      213: 7113148188034307857
+    second: Windows 2_41
+  - first:
+      213: 495011670897143061
+    second: Windows 2_42
+  - first:
+      213: 8160785513423395707
+    second: Windows 2_43
+  - first:
+      213: -8392996179869673277
+    second: Windows 2_44
+  - first:
+      213: -2179588214900493674
+    second: Windows 2_45
+  - first:
+      213: -330431292285751341
+    second: Windows 2_46
+  - first:
+      213: -4889761623157389521
+    second: Windows 2_47
+  - first:
+      213: 411190605394777445
+    second: Windows 2_48
+  - first:
+      213: -7670889917540182006
+    second: Windows 2_49
+  - first:
+      213: -3233679475957142318
+    second: Windows 2_50
+  - first:
+      213: 4505541923329344724
+    second: Windows 2_51
+  - first:
+      213: 3832737603359983372
+    second: Windows 2_52
+  - first:
+      213: 5319673587457282705
+    second: Windows 2_53
+  - first:
+      213: -5100726589538783492
+    second: Windows 2_54
+  - first:
+      213: -1207219016113875856
+    second: Windows 2_55
+  - first:
+      213: 3120894890155913480
+    second: Windows 2_56
+  - first:
+      213: 3295958033863501992
+    second: Windows 2_57
+  - first:
+      213: 6933948725659230879
+    second: Windows 2_58
+  - first:
+      213: -8882817745080789471
+    second: Windows 2_59
+  - first:
+      213: 224470612820054329
+    second: Windows 2_60
+  - first:
+      213: -7523189210788382949
+    second: Windows 2_61
+  - first:
+      213: -1107960712918015009
+    second: Windows 2_62
+  - first:
+      213: 5533796043759723730
+    second: Windows 2_63
+  - first:
+      213: 4333221532124277704
+    second: Windows 2_64
+  - first:
+      213: -7777986671180680369
+    second: Windows 2_65
+  - first:
+      213: 3406494332112738538
+    second: Windows 2_66
+  - first:
+      213: 1448549416899386726
+    second: Windows 2_67
+  - first:
+      213: -7857915797157353883
+    second: Windows 2_68
+  - first:
+      213: -4267420918054155513
+    second: Windows 2_69
+  - first:
+      213: -4776224218244228974
+    second: Windows 2_70
+  - first:
+      213: 7918169235737693617
+    second: Windows 2_71
+  - first:
+      213: -4672456106424632246
+    second: Windows 2_72
+  - first:
+      213: 5821921928656828644
+    second: Windows 2_73
+  - first:
+      213: -4753482163045049747
+    second: Windows 2_74
+  - first:
+      213: -4168179741722275405
+    second: Windows 2_75
+  - first:
+      213: -1335272875185487561
+    second: Windows 2_76
+  - first:
+      213: -7029578796414430689
+    second: Windows 2_77
+  - first:
+      213: 2298321958446858327
+    second: Windows 2_78
+  - first:
+      213: 6711000857669777908
+    second: Windows 2_79
+  - first:
+      213: -7593666692520120156
+    second: Windows 2_80
+  - first:
+      213: 38607948188087363
+    second: Windows 2_81
+  - first:
+      213: 2704615639040397207
+    second: Windows 2_82
+  - first:
+      213: 1627499016015387820
+    second: Windows 2_83
+  - first:
+      213: 7263982402790366835
+    second: Windows 2_84
+  - first:
+      213: -7673102733798979787
+    second: Windows 2_85
+  - first:
+      213: 3723326101135562167
+    second: Windows 2_86
+  - first:
+      213: 8509157137369212662
+    second: Windows 2_87
+  - first:
+      213: 6116626270052865871
+    second: Windows 2_88
+  - first:
+      213: -3341647309011697489
+    second: Windows 2_89
+  - first:
+      213: -6609233149895113966
+    second: Windows 2_90
+  - first:
+      213: -7296326314473072087
+    second: Windows 2_91
+  - first:
+      213: 3915422424681032575
+    second: Windows 2_92
+  - first:
+      213: -5268065818527884262
+    second: Windows 2_93
+  - first:
+      213: 5472675658586406703
+    second: Windows 2_94
+  - first:
+      213: 5320516256007977414
+    second: Windows 2_95
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 0
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 20
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Windows 2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 40
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e59a0ec35ca2a89c0800000000000000
+      internalID: -3924277098681685666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Windows 2_1
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 0
+        width: 40
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbd7ef4b841d23670800000000000000
+      internalID: 8517099955515456955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Windows 2_2
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 0
+        width: 40
+        height: 72
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d5a0931f2b9db6a0800000000000000
+      internalID: -6431814066321185320
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
