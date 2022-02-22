@@ -258,6 +258,7 @@ MonoBehaviour:
   dashDuration: 0.2
   dashAllow: 2
   jumpSpeed: 10
+  jumpDownSpeed: -2
   jumpImpulse: 6
   jumpEnd: 0.15
   fallSpeedMax: -28
