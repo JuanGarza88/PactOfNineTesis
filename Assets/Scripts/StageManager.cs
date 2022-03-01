@@ -22,10 +22,12 @@ public class StageManager : MonoBehaviour
         InitializeStage();
     }
 
-     void InitializeStage()
+    void InitializeStage()
     {
         var ladders = FindObjectsOfType<Ladder>();
         var platforms = FindObjectsOfType<MovingPlatform>();
+
+        var checkpoints = FindObjectsOfType<Checkpoint>();
 
         foreach (var ladder in ladders)
         {
@@ -36,6 +38,13 @@ public class StageManager : MonoBehaviour
         {
             platform.Initialize();
         }
+
+
+        foreach (var checkpoint in checkpoints)
+        {
+            checkpoint.Initialize();
+        }
     }
+
 
 }

@@ -4,35 +4,36 @@ using UnityEngine;
 
 public class PlayerData : MonoBehaviour
 {
+    [SerializeField] int baseHealthPoints; //Determinamos cuantos son nuestros puntos de vida base.
+
+    public int checkpoint; //Puede ser un string por si necesitamos una referencia especifica
+
     public bool[] weaponMeleeUpgrades;
-    public int meleeDamage;
-
     public bool[] healthUpgrades;
-
     public bool[] keys;
-
-    public float baseHealthPoints;
-    public float healtPointsMax;
-    
-    public float healthPoints;
 
     public bool greenKeyObtained;
 
+    public float healtPointsMax;
+    public float healthPoints;
+
+    
+    public int meleeDamage;
+
+
     private void Awake()
     {
-        weaponMeleeUpgrades = new bool[] { false, false, false}; //Arreflode los upgrdes del melee
+        weaponMeleeUpgrades = new bool[] { false, false, false, false}; //Arreflode los upgrdes del melee
         healthUpgrades = new bool[] { false, false, false, false, false }; //Arreglo de booleanos 5 items en falso
         keys = new bool[] { false, false, false, false, false }; 
     }
 
     void Start()
     {
-        meleeDamage = UpgradeCount(weaponMeleeUpgrades) * 2;
-
-        baseHealthPoints = 20;
-        healtPointsMax = baseHealthPoints + (UpgradeCount(healthUpgrades) * 5);
-
+        healtPointsMax = baseHealthPoints + UpgradeCount(healthUpgrades);
         healthPoints = healtPointsMax;
+ 
+        meleeDamage = UpgradeCount(weaponMeleeUpgrades) * 2;
     }
 
  
@@ -41,8 +42,8 @@ public class PlayerData : MonoBehaviour
         if(upgradeName == "Health Upgrade")
         {
             healthUpgrades[id] = true;
-            healtPointsMax = baseHealthPoints + (UpgradeCount(healthUpgrades) * 5);
-            healthPoints += 5;
+            healtPointsMax = baseHealthPoints + UpgradeCount(healthUpgrades);
+            healthPoints ++;
 
             Debug.Log(" Tu tienes " + UpgradeCount(healthUpgrades) + " Upgrades de vida ");
         }
@@ -84,8 +85,8 @@ public class PlayerData : MonoBehaviour
         return upgrades;
     }
 
-    public void Heal(int hp)
+    public void Heal()
     {
-        healthPoints = Mathf.Clamp(healthPoints + hp, 0, healtPointsMax); //para asegurarnos que no lo cure por encima de hp max
+        healthPoints = Mathf.Clamp(healthPoints + 1, 0, healtPointsMax); //para asegurarnos que no lo cure por encima de hp max
     }
 }

@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSpeed: 1
+  enterPoint: 0
+  direction: 0
 --- !u!114 &3733781354120923426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,9 +59,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 752ce7a9e798ddf48b49a0f38ad3b93d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponMeleeUpgrades: 0
+  baseHealthPoints: 4
+  weaponMeleeUpgrades: 
+  healthUpgrades: 
+  keys: 
+  greenKeyObtained: 0
+  healtPointsMax: 0
+  healthPoints: 0
   meleeDamage: 0
-  healthUpgrades: 0
-  baseHealthPoints: 0
-  healtPointsMax: 20
-  healthPoints: 20

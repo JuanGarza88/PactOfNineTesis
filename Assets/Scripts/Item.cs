@@ -35,7 +35,7 @@ public class Item : MonoBehaviour
     {
         if (itemName == "Health Drop")
         {
-            playerData.Heal(3);
+            playerData.Heal();
         }
         else if (itemName == "Ammo Drop")
         {

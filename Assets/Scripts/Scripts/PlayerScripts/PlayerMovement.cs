@@ -469,7 +469,7 @@ public class PlayerMovement : MonoBehaviour
         direction = positionX > transform.position.x ? Direction.Right : Direction.Left;
         FlipPlayer();
 
-        playerData.healthPoints--;
+        playerData.healthPoints = Mathf.Clamp(playerData.healthPoints - 1, 0, 999);
 
 
         walkSpeed = 0;
@@ -482,6 +482,11 @@ public class PlayerMovement : MonoBehaviour
         recoverCounter = recoverTime;
         invincibilityCounter = invincibilityTime;
         blinker.enabled = true;
+
+        if(playerData.healthPoints == 0)
+        {
+            //die
+        }
     }
 
     private bool InvincibilityOn()
