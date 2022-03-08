@@ -9,7 +9,7 @@ public class Item : MonoBehaviour
 
     PlayerData playerData;
 
-    private void Start()
+    public void Initialize()
     {
         playerData = FindObjectOfType<PlayerData>();
 
@@ -33,14 +33,16 @@ public class Item : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
+        playerData = FindObjectOfType<PlayerData>();
+
         if (itemName == "Health Drop")
         {
             playerData.Heal();
         }
-        else if (itemName == "Ammo Drop")
-        {
+        //else if (itemName == "Ammo Drop")
+        //{
 
-        }
+        //}
         else
         {
             playerData.UpdateUpgrades(itemName, id);

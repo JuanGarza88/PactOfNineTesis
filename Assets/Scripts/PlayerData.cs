@@ -20,20 +20,26 @@ public class PlayerData : MonoBehaviour
     
     public int meleeDamage;
 
+    //private void Awake()   //Esto ya no\\
+    //{
+    //    weaponMeleeUpgrades = new bool[] { false, false, false, false }; //Arreflode los upgrdes del melee
+    //    healthUpgrades = new bool[] { false, false, false, false, false }; //Arreglo de booleanos 5 items en falso
+    //    keys = new bool[] { false, false, false, false, false };
+    //}
 
-    private void Awake()
-    {
-        weaponMeleeUpgrades = new bool[] { false, false, false, false}; //Arreflode los upgrdes del melee
-        healthUpgrades = new bool[] { false, false, false, false, false }; //Arreglo de booleanos 5 items en falso
-        keys = new bool[] { false, false, false, false, false }; 
-    }
 
-    void Start()
+    public void UpdateStats()
     {
+        Debug.Log(weaponMeleeUpgrades[0]);
+        Debug.Log(weaponMeleeUpgrades[1]);
+        Debug.Log(weaponMeleeUpgrades[2]);
+
         healtPointsMax = baseHealthPoints + UpgradeCount(healthUpgrades);
         healthPoints = healtPointsMax;
  
         meleeDamage = UpgradeCount(weaponMeleeUpgrades) * 2;
+
+        greenKeyObtained = keys[0];
     }
 
  

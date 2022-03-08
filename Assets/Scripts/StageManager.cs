@@ -13,6 +13,8 @@ public class StageManager : MonoBehaviour
     PlayerMovement player;
     void Start()
     {
+        
+
         gameManager = FindObjectOfType<GameManager>();
         player = Instantiate(playerPrefab, enterPonts[gameManager.enterPoint].position, Quaternion.identity);
         player.direction = gameManager.direction;
@@ -24,23 +26,31 @@ public class StageManager : MonoBehaviour
 
     void InitializeStage()
     {
+        FindObjectOfType<DataManager>().Initialize();
+
+
+
         var ladders = FindObjectsOfType<Ladder>();
         var platforms = FindObjectsOfType<MovingPlatform>();
-
+        var items = FindObjectsOfType<Item>();
         var checkpoints = FindObjectsOfType<Checkpoint>();
 
-        foreach (var ladder in ladders)
+        foreach (var ladder in ladders) //LADDERS//
         {
             ladder.Initialize();
         }
 
-        foreach (var platform in platforms)
+        foreach (var platform in platforms)    //PLATFORMS//
         {
             platform.Initialize();
         }
 
+        foreach (var item in items)      //ITEMS///
+        {
+            item.Initialize();
+        }
 
-        foreach (var checkpoint in checkpoints)
+        foreach (var checkpoint in checkpoints)      //CHECKPOINTS//
         {
             checkpoint.Initialize();
         }

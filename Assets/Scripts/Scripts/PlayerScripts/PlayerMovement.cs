@@ -485,7 +485,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(playerData.healthPoints == 0)
         {
-            //die
+            FindObjectOfType<DataManager>().LoadData();
         }
     }
 
