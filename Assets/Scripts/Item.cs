@@ -54,7 +54,7 @@ public class Item : MonoBehaviour
                 UnlockBlocks("Green");
             }
         }
-
+        SFXManager.Instance.PlaySFX(SFXManager.SFXName.Fountain);
         Destroy(gameObject);
     }
     private void UnlockBlocks(string color)

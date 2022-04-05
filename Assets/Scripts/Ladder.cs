@@ -41,7 +41,8 @@ public class Ladder : MonoBehaviour
             spriteRenderer.color = active;
             player.SetActiveLadder(gameObject);
         }
-
+        if (!GameManager.Instance.ladderVisible)
+            spriteRenderer.color = Color.clear;
 
     }
 

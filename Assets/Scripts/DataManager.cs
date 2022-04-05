@@ -8,25 +8,31 @@ public class DataManager : MonoBehaviour
     GameManager gameManager;
     PlayerData playerData;
 
-    private bool initialized;
+    private bool initialized; 
 
     public void Initialize()
     {
         if (!initialized)
         {
             initialized = true; //Para que lo haga una vez
-            LoadData();
+
+            gameManager = FindObjectOfType<GameManager>();
+            switch (GameManager.Instance.useTestValues)
+            {
+                case true: LoadTestData(); break;
+                case false: LoadData(); break;
+            }
+            
         }
     }
 
     public void LoadData() 
     {
         //Si ponemos mas cosas para guardar tenemos que aregar mas strings o sea cadena de texto\\
-
         gameManager = FindObjectOfType<GameManager>();
         playerData = FindObjectOfType<PlayerData>();
 
-        string saveString =  PlayerPrefs.GetString("Player Data 1", "0|000|000000000000|00000"); //cadena de texto
+        string saveString =  PlayerPrefs.GetString(gameManager.SaveSlotKey(), "0|000|000000000000|00000"); //cadena de texto
         Debug.Log("Loading Data: " + saveString);
 
         string[] saveStrings = saveString.Split('|');
@@ -37,19 +43,40 @@ public class DataManager : MonoBehaviour
         playerData.keys = StringToBoolArray(saveStrings[3]);
 
         playerData.UpdateStats();
-
-        if (playerData.checkpoint == 1)
+        //esto se puede hacer mas sencillo. La parte "gameManager.enterPoint = 2;" puede cambiar del 2 al 1 ya que es
+        if(playerData.checkpoint == 0)
         {
-            gameManager.enterPoint = 0; //2 //que tenga el element 2\\ //Que sea 0 ya que es el default.
+            gameManager.enterPoint = 0;
             SceneManager.LoadScene("Stage 01x");
         }
-        if (playerData.checkpoint == 2)  //CHECAR\\
+        if (playerData.checkpoint == 1)
         {
-            gameManager.enterPoint = 0; //2 //que tenga el element 2\\
+            gameManager.enterPoint = 2; //2 //que tenga el element 2\\ // O Que sea 0 ya que es el default.
+            SceneManager.LoadScene("Stage 01x");
+        }
+        if (playerData.checkpoint == 2)  //CHECAR al terminar\\ 
+        {
+            gameManager.enterPoint = 2; //2 //que tenga el element 2\\ //
             SceneManager.LoadScene("Stage 03x");
         }
+    }
 
+    private void LoadTestData()
+    {
+        gameManager = FindObjectOfType<GameManager>();
+        playerData = GetComponent<PlayerData>();
+        var testValues = GetComponent<TestValues>();
 
+        GameManager.Instance.enterPoint = 0;
+        playerData.weaponMeleeUpgrades = testValues.weaponMeleeUpgrades;
+        playerData.healthUpgrades = testValues.healthUpgrades;
+        playerData.keys = testValues.keys;
+
+        playerData.UpdateStats();
+
+        initialized = true;
+
+        FindObjectOfType<StageManager>().InitializeStage();
     }
 
     public void SaveData()
@@ -70,11 +97,12 @@ public class DataManager : MonoBehaviour
         foreach (bool key in playerData.keys)
             saveString += key ? "1" : "0";
 
-        PlayerPrefs.SetString("Player Data 1", saveString);
+        PlayerPrefs.SetString(gameManager.SaveSlotKey(), saveString);
+
         Debug.Log("Saving Data: " + saveString);
     }
 
-    private bool[] StringToBoolArray(string intString)
+    bool[] StringToBoolArray(string intString)
     {
         bool[] boolArray = new bool[intString.Length];
         for (var i = 0; i < intString.Length; i++)

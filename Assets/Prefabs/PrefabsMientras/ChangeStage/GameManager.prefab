@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 4704122042652152871}
   - component: {fileID: 4704122042652152870}
   - component: {fileID: 3733781354120923426}
+  - component: {fileID: 3967064257623010133}
+  - component: {fileID: 7581154802177836886}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -45,8 +47,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSpeed: 1
+  useTestValues: 1
+  stageObjectsVisible: 0
+  ladderVisible: 0
+  savingDisabled: 0
+  invincibility: 0
   enterPoint: 0
   direction: 0
+  saveSlot: 0
 --- !u!114 &3733781354120923426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -60,10 +68,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseHealthPoints: 4
+  baseMeleeDamage: 2
+  checkpoint: 0
   weaponMeleeUpgrades: 
   healthUpgrades: 
   keys: 
   greenKeyObtained: 0
-  healtPointsMax: 0
+  healthPointsMax: 0
   healthPoints: 0
+  meleeLvl: 0
   meleeDamage: 0
+--- !u!114 &3967064257623010133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4704122042652152865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cf28a85d6dc25444918d5b837ab021f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkpoint: 0
+  weaponMeleeUpgrades: 000000
+  healthUpgrades: 000000000000000000000000
+  keys: 0000000000
+--- !u!114 &7581154802177836886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4704122042652152865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5e78030fefdbab4d96cd6bad9a6a96c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

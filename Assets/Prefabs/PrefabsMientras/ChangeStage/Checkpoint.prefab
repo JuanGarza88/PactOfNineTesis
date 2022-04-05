@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 143038988023575402}
+  - component: {fileID: 4328499510175124793}
   - component: {fileID: 7519546475693236141}
   - component: {fileID: 5382051821928067210}
   - component: {fileID: 102865060029755028}
-  - component: {fileID: 4328499510175124793}
   m_Layer: 16
   m_Name: Checkpoint
   m_TagString: Untagged
@@ -34,6 +34,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4328499510175124793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8455347596423484519}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0acd5ba137cb8949b20d347e6c98000, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 1
+  active: {fileID: 5240123770684355362, guid: 43595eca6fe02c64fb1287c8e982b738, type: 3}
+  inactive: {fileID: -3448120935943364757, guid: 43595eca6fe02c64fb1287c8e982b738, type: 3}
 --- !u!212 &7519546475693236141
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -132,18 +147,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.5}
   m_EdgeRadius: 0
---- !u!114 &4328499510175124793
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8455347596423484519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0acd5ba137cb8949b20d347e6c98000, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 1
-  active: {fileID: 5240123770684355362, guid: 43595eca6fe02c64fb1287c8e982b738, type: 3}
-  inactive: {fileID: -3448120935943364757, guid: 43595eca6fe02c64fb1287c8e982b738, type: 3}

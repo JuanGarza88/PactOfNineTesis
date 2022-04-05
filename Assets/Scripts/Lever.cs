@@ -58,7 +58,7 @@ public class Lever : MonoBehaviour
         //if (isActive)  //esto es por si  lo queremos activar 1 vez y se quede para siempre activado
         //    return; 
 
-
+        SFXManager.Instance.PlaySFX(SFXManager.SFXName.Locking);//CAMBIAR SONIDO DE SWITCHES
         isActive = !isActive;
         spriteRenderer.sprite = isActive ? activeSprite : inactiveSprite;
         UpdateLinkedObjects();

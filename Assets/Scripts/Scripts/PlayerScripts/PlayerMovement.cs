@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [Header("Character")]
+    [SerializeField] string characterName;
+
     [Header("Colliders")]
     [SerializeField] Collider2D body;
     [SerializeField] Collider2D feet;
@@ -71,23 +74,26 @@ public class PlayerMovement : MonoBehaviour
     private string currentAnimation;
 
     private bool isDashing;
-    void Awake()
+    public void Initialize()
     {
         rb = GetComponent<Rigidbody2D>();
         myAnimator = GetComponent<Animator>();
         blinker = GetComponent<Blinker>();
         playerData = FindObjectOfType<PlayerData>(); //Esta en el GameManager para que no se elimine y se peda pasar de stage.
+
+        UpdateAnimations();
     }
 
     
     void Update() //Checar lo de el movimiento que la aceleracion comience en 1 y -1///
     {
         currentAnimation = CurrentAnimation();
+        currentAnimation = currentAnimation.Remove(0, characterName.Length + 1);
 
         Recover();
         Invincibility();
 
-        if (currentAnimation != "Attack Melee" && currentAnimation != "Jump Attack Melee")
+        if (currentAnimation != "Attack Melee 1" && currentAnimation != "Jump Attack Melee 1" && currentAnimation != "Attack Range 1" && currentAnimation != "Jump Attack Range 1") //Ponerle el numero solo aplica para current animation
         {
             DamageOff();
             myAnimator.SetBool("Attacking", false);
@@ -104,6 +110,7 @@ public class PlayerMovement : MonoBehaviour
                 Jump();
                 ShowJump();
                 MeleeAttack();
+                RangeAttack();
                 FlipPlayer();
             }
         }
@@ -174,8 +181,16 @@ public class PlayerMovement : MonoBehaviour
 
        if(!GroundCheckerIsTouchingGround())
        {
-            if (currentAnimation == "Attack Melee")
-                myAnimator.Play("Jump Attack Melee", 0, CurrentAnimationTime());
+            switch (currentAnimation) //Preguntar para que son estas cosas de switch 
+            {
+                case "Attack Melee 1": myAnimator.Play("Jump Attack Melee", 0, CurrentAnimationTime()); break;
+                case "Attack Range 1": myAnimator.Play("Jump Attack Range", 0, CurrentAnimationTime()); break;
+            }
+
+            //if (currentAnimation == "Attack Melee 1") es lo mismo que lo de arriba 
+            //    //myAnimator.Play("Jump Attack Melee", 0, CurrentAnimationTime());
+            //if (currentAnimation == "Attack Range 1")
+            //    //myAnimator.Play("Jump Attack Range", 0, CurrentAnimationTime()); 
 
             if (jumpCounter < 1 && !myAnimator.GetBool("Climbing"))
                 jumpCounter = 1;
@@ -184,8 +199,16 @@ public class PlayerMovement : MonoBehaviour
 
        if(FeetIsTouchingGround())
        {
-            if (currentAnimation == "Jump Attack Melee")
-                myAnimator.Play("Attack Melee", 0, CurrentAnimationTime());
+            switch (currentAnimation) //Preguntar para que son estas cosas de switch 
+            {
+                case "Jump Attack Melee 1": myAnimator.Play("Attack Melee", 0, CurrentAnimationTime()); break;
+                case "Jump Attack Range 1": myAnimator.Play("Attack Range", 0, CurrentAnimationTime()); break;
+            }
+
+            //if (currentAnimation == "Jump Attack Melee 1") es lo mismo
+            //    myAnimator.Play("Attack Melee", 0, CurrentAnimationTime());
+            //if (currentAnimation == "Jump Attack Range 1")
+            //    myAnimator.Play("Attack Range", 0, CurrentAnimationTime());
 
             jumpCounter = 0;
             myAnimator.SetBool("Jumping", false);
@@ -313,14 +336,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isDashing)
             return;
-        if (Input.GetAxis("Horizontal") < 0 && currentAnimation != "Attack Melee")
+        if (Input.GetAxis("Horizontal") < 0 && currentAnimation != "Attack Melee 1")
         {
             direction = Direction.Left;
             walkSpeed -= acceleration * Time.deltaTime;
             if (walkSpeed > 0)
                 walkSpeed -= acceleration * Time.deltaTime;
         }
-        else if (Input.GetAxis("Horizontal") > 0 && currentAnimation != "Attack Melee")
+        else if (Input.GetAxis("Horizontal") > 0 && currentAnimation != "Attack Melee 1")
         {
             direction = Direction.Right;
             walkSpeed += acceleration * Time.deltaTime;
@@ -410,6 +433,24 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void RangeAttack()
+    {
+       if (isDashing)
+            return;
+
+        //if (playerData.GetUpgrades("Weapon Melee") < 1) // Si no tienes el arma no puedes pegar o sea si no tienes el upgrade
+        //    return;
+
+        if (Input.GetButtonDown("Attack Range") && !myAnimator.GetBool("Attacking"))
+        {
+            myAnimator.SetBool("Attacking", true);
+            if (myAnimator.GetBool("Jumping"))
+                myAnimator.Play("Jump Attack Range", 0, 0f);
+            else
+                myAnimator.Play("Attack Range", 0, 0f);
+        }
+    }
+
     void FlipPlayer()
     {
         if (direction == Direction.Left && !myAnimator.GetBool("Attacking"))
@@ -463,7 +504,7 @@ public class PlayerMovement : MonoBehaviour
     
     public void TakeDamage(float positionX) //Cuando te pegan.
     {
-        if (InvincibilityOn())
+        if (InvincibilityOn() || GameManager.Instance.invincibility)
             return;
 
         direction = positionX > transform.position.x ? Direction.Right : Direction.Left;
@@ -482,6 +523,8 @@ public class PlayerMovement : MonoBehaviour
         recoverCounter = recoverTime;
         invincibilityCounter = invincibilityTime;
         blinker.enabled = true;
+
+        SFXManager.Instance.PlaySFX(SFXManager.SFXName.PlayerHurt); //Cambiar audio o sea el sonido.
 
         if(playerData.healthPoints == 0)
         {
@@ -517,6 +560,12 @@ public class PlayerMovement : MonoBehaviour
                 other.GetComponentInParent<Killable>().ProcessDamage(playerData.meleeDamage, Mathf.Sign(transform.lossyScale.x * -1));
 
         }
+    }
+
+    public void UpdateAnimations()
+    {
+        myAnimator.SetLayerWeight(1, playerData.meleeLvl == 2 ? 1 : 0);
+        myAnimator.SetLayerWeight(2, playerData.meleeLvl == 3 ? 1 : 0);
     }
 
     public enum Direction //para guardar en una variable uno de los dos valores

@@ -17,7 +17,7 @@ public class Block : MonoBehaviour
 
     PlayerData playerData;
 
-    private void Start()
+    public void Iniatilize() //Iniatilize
     {
         playerData = FindObjectOfType<PlayerData>();
         if(id == "Green")

@@ -38,6 +38,12 @@ public class Checkpoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        SFXManager.Instance.PlaySFX(SFXManager.SFXName.CheckPoint); //Cambiar sonido de checkpoint.
+
+        if (GameManager.Instance.savingDisabled) //Para que no se guarde.
+            return; 
+
+        playerData.Heal(16);
         spriteRenderer.sprite = active;
         playerData.checkpoint = id;
         dataManager.SaveData();

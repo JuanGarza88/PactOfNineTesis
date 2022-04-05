@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerData : MonoBehaviour
 {
     [SerializeField] int baseHealthPoints; //Determinamos cuantos son nuestros puntos de vida base.
-
+    [SerializeField] int baseMeleeDamage;
     public int checkpoint; //Puede ser un string por si necesitamos una referencia especifica
 
     public bool[] weaponMeleeUpgrades;
@@ -14,10 +14,10 @@ public class PlayerData : MonoBehaviour
 
     public bool greenKeyObtained;
 
-    public float healtPointsMax;
+    public float healthPointsMax;
     public float healthPoints;
 
-    
+    public int meleeLvl;
     public int meleeDamage;
 
     //private void Awake()   //Esto ya no\\
@@ -30,16 +30,28 @@ public class PlayerData : MonoBehaviour
 
     public void UpdateStats()
     {
-        Debug.Log(weaponMeleeUpgrades[0]);
-        Debug.Log(weaponMeleeUpgrades[1]);
-        Debug.Log(weaponMeleeUpgrades[2]);
+        healthPointsMax = baseHealthPoints + UpgradeCount(healthUpgrades);
+        healthPoints = healthPointsMax;
 
-        healtPointsMax = baseHealthPoints + UpgradeCount(healthUpgrades);
-        healthPoints = healtPointsMax;
+        //Esto es para que haya un orden en las mejoras del arma.
+        if (weaponMeleeUpgrades[2])
+            meleeLvl = 3;
+
+        else if (weaponMeleeUpgrades[1])
+            meleeLvl = 2;
+
+        else if (weaponMeleeUpgrades[0])
+            meleeLvl = 1;
+
+        else
+            meleeLvl = 0;
  
-        meleeDamage = UpgradeCount(weaponMeleeUpgrades) * 2;
+        meleeDamage = meleeLvl * baseMeleeDamage;
 
         greenKeyObtained = keys[0];
+
+        if (FindObjectOfType<PlayerMovement>())
+            FindObjectOfType<PlayerMovement>().UpdateAnimations();
     }
 
  
@@ -48,7 +60,7 @@ public class PlayerData : MonoBehaviour
         if(upgradeName == "Health Upgrade")
         {
             healthUpgrades[id] = true;
-            healtPointsMax = baseHealthPoints + UpgradeCount(healthUpgrades);
+            UpdateStats();
             healthPoints ++;
 
             Debug.Log(" Tu tienes " + UpgradeCount(healthUpgrades) + " Upgrades de vida ");
@@ -56,17 +68,18 @@ public class PlayerData : MonoBehaviour
         if(upgradeName == "Weapon Melee")
         {
             weaponMeleeUpgrades[id] = true;
-            meleeDamage = UpgradeCount(weaponMeleeUpgrades) * 2;
+            UpdateStats();
+
+            Debug.Log(" Tu tienes " + UpgradeCount(weaponMeleeUpgrades) + " Upgrades de daño ");
         }
         if (upgradeName == "Key")
         {
             keys[id] = true;
-            if (id == 0)
-                greenKeyObtained = true;
+            UpdateStats();
         }
     }
 
-    int UpgradeCount(bool[] statusArray)
+    public int UpgradeCount(bool[] statusArray)
     {
         int count = 0;
         for(int i = 0; i < statusArray.Length; i++)
@@ -91,8 +104,8 @@ public class PlayerData : MonoBehaviour
         return upgrades;
     }
 
-    public void Heal()
+    public void Heal(int points = 1)
     {
-        healthPoints = Mathf.Clamp(healthPoints + 1, 0, healtPointsMax); //para asegurarnos que no lo cure por encima de hp max
+        healthPoints = Mathf.Clamp(healthPoints + points, 0, healthPointsMax); //para asegurarnos que no lo cure por encima de hp max
     }
 }
