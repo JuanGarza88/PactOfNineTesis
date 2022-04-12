@@ -47,18 +47,24 @@ public class DataManager : MonoBehaviour
         if(playerData.checkpoint == 0)
         {
             gameManager.enterPoint = 0;
-            SceneManager.LoadScene("Stage 01x");
+            SceneManager.LoadScene("NS-001");
         }
         if (playerData.checkpoint == 1)
         {
-            gameManager.enterPoint = 2; //2 //que tenga el element 2\\ // O Que sea 0 ya que es el default.
-            SceneManager.LoadScene("Stage 01x");
+            gameManager.enterPoint = 0;
+            SceneManager.LoadScene("NS-007");
         }
-        if (playerData.checkpoint == 2)  //CHECAR al terminar\\ 
-        {
-            gameManager.enterPoint = 2; //2 //que tenga el element 2\\ //
-            SceneManager.LoadScene("Stage 03x");
-        }
+
+        //if (playerData.checkpoint == 1)
+        //{
+        //    gameManager.enterPoint = 2; //2 //que tenga el element 2\\ // O Que sea 0 ya que es el default.
+        //    SceneManager.LoadScene("Stage 01x");
+        //}
+        //if (playerData.checkpoint == 2)  //CHECAR al terminar\\ 
+        //{
+        //    gameManager.enterPoint = 2; //2 //que tenga el element 2\\ //
+        //    SceneManager.LoadScene("Stage 03x");
+        //}
     }
 
     private void LoadTestData()

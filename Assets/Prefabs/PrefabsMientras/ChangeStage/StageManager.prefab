@@ -44,10 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdfa3bbc01400de4eb3cf4ecefaa0eb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: 2834654544243798150, guid: 1042ca811c6d4f649bb373a82a65fc06, type: 3}
+  playerPrefab: {fileID: 8137719611329882288, guid: a7aaf76219d20154baf79009c7bf81dc, type: 3}
   size: {x: 1, y: 1}
   enterPonts:
   - {fileID: 0}
+  theme: 6
 --- !u!114 &885728199567123835
 MonoBehaviour:
   m_ObjectHideFlags: 0

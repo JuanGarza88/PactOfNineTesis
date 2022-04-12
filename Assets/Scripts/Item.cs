@@ -47,7 +47,7 @@ public class Item : MonoBehaviour
         {
             playerData.UpdateUpgrades(itemName, id);
         }
-        if(itemName == "Key")
+        if(itemName == "Key") //Se duplica cuando vayamos a utilizar otras llaves para abrir otros bloques.
         {
             if (id == 0) //si el Id es 0 va a desbloquear todos los bloques que tenga el ID 0.
             {
