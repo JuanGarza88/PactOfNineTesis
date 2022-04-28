@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 7357310136639151443}
   - component: {fileID: 4771945384600677722}
   - component: {fileID: 8100380289542267461}
+  - component: {fileID: 8398819939595978583}
   m_Layer: 0
   m_Name: Zombie 1
   m_TagString: Untagged
@@ -231,7 +232,10 @@ MonoBehaviour:
   changeTime: 0.06
   sparkPoint: {fileID: 4655694840271585841}
   sparkPrefab: {fileID: 2794857022403858918, guid: 3065cf194f8646945b9d086913c13391, type: 3}
+  explosionPrefab: {fileID: 8965703839388791605, guid: 4b6c1e3bd182ff8499570854e08b2dc6, type: 3}
+  hitbox: {fileID: 5675780177625863629}
   healthDropPrefab: {fileID: 1831338636330037262, guid: 7a43ae725303f8c4f9bc172925e46d16, type: 3}
+  ammoDropPrefab: {fileID: 1831338636330037262, guid: 2a8c224a637e7604494b1c5a9e242add, type: 3}
 --- !u!114 &5053585956301623727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,6 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac97aa63cde81994086397135fcd423e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: 0
 --- !u!212 &7357310136639151443
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -311,7 +316,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 6
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a77f41548dbed7c4c91b8b367a4c706e, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -335,6 +340,19 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8398819939595978583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3809809372071123516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a86c841dff23b542907dd68d90d3bac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  direction: 0
 --- !u!1 &4477418435954548973
 GameObject:
   m_ObjectHideFlags: 0

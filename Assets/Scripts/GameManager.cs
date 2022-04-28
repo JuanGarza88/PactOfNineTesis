@@ -11,6 +11,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] public bool ladderVisible; //Los bjetos que muestran el estado de la escalera.
     [SerializeField] public bool savingDisabled;
     [SerializeField] public bool invincibility;
+    [SerializeField] public bool infiniteHealth;
+
+    [Header("World")]
+    [SerializeField] public Vector2 screenSize;
+    [SerializeField] public float cameraOffset;
 
     public int enterPoint = 0;
     public PlayerMovement.Direction direction = PlayerMovement.Direction.Right;

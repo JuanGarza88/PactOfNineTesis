@@ -28,8 +28,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("DashSpeed")]
     [SerializeField] float dashSpeed;
     [SerializeField] float dashDuration;
-    [SerializeField] int dashAllow; 
-
+    [SerializeField] int dashAllow;
+    
 
     [Header("Jump")]
     [SerializeField] float jumpSpeed;
@@ -39,11 +39,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpImpulse;
     [SerializeField] float jumpEnd;
     [SerializeField] float fallSpeedMax;
-    [SerializeField] int jumpsAllowed; //Para saber cuantos saltos tenemos.
+    [SerializeField] public int jumpsAllowed = 1; //Para saber cuantos saltos tenemos.
     [SerializeField] float gravityScale; //La gravedad que deshabilitaremos y habilitaremos en varios momentos.
 
+    [Header("Attack")]
+    [SerializeField] GameObject[] projectilePrefabs;
+    [SerializeField] Transform projectilePoint;
+
     [Header("Damage")]
-    [SerializeField] float damageThrowHorizontal; //Cuando el jugador toca un eemento q lo daña hace una reaccion
+    [SerializeField] float damageThrowHorizontal; //Cuando el jugador toca un eemento q lo daï¿½a hace una reaccion
     [SerializeField] float damageThrowVertical;
     [SerializeField] float recoverTime; //Tiempo de recuperacion, recuperas control
     [SerializeField] float invincibilityTime; //Tiempo que dura el periodo de inbunerabilidad.
@@ -82,6 +86,8 @@ public class PlayerMovement : MonoBehaviour
         playerData = FindObjectOfType<PlayerData>(); //Esta en el GameManager para que no se elimine y se peda pasar de stage.
 
         UpdateAnimations();
+
+        
     }
 
     
@@ -93,7 +99,9 @@ public class PlayerMovement : MonoBehaviour
         Recover();
         Invincibility();
 
-        if (currentAnimation != "Attack Melee 1" && currentAnimation != "Jump Attack Melee 1" && currentAnimation != "Attack Range 1" && currentAnimation != "Jump Attack Range 1") //Ponerle el numero solo aplica para current animation
+        SwitchPowers(); //poderes jaj
+
+        if (!(GroundAttack() || AirAttack()))
         {
             DamageOff();
             myAnimator.SetBool("Attacking", false);
@@ -118,16 +126,29 @@ public class PlayerMovement : MonoBehaviour
         activeLadder = null;
     }
 
+    private bool GroundAttack()
+    {
+        return currentAnimation == "Attack Melee 1" || currentAnimation == "Attack Range 1";
+    }
+
+    private bool AirAttack()
+    {
+        return currentAnimation == "Jump Attack Melee 1" || currentAnimation == "Jump Attack Range 1";
+    }
+
     private void Dash()
     {
+        playerData = FindObjectOfType<PlayerData>();
+
         if (isDashing)
             return;
 
         if (myAnimator.GetBool("Attacking"))
             return;
 
-        if (Input.GetKeyDown(KeyCode.V) && dashCounter < dashAllow) 
+        if (Input.GetKeyDown(KeyCode.V) && dashCounter < dashAllow && playerData.powerUpDash == true) 
         {
+            
             isDashing = true;
             myAnimator.SetBool("Dashing", true);
             float dashVelocity = direction.Equals(Direction.Right) ? dashSpeed : -dashSpeed;
@@ -143,7 +164,7 @@ public class PlayerMovement : MonoBehaviour
             myAnimator.SetBool("Jumping", false);
 
         }
-               
+        
     }
 
     private IEnumerator DashCorroutine()
@@ -338,16 +359,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isDashing)
             return;
-        //if (Input.GetAxis("Horizontal") < 0 && currentAnimation != "Attack Melee 1")
-        if ((Input.GetAxis("Horizontal") < 0 && currentAnimation != "Attack Melee 1") && ((Input.GetAxis("Horizontal") < 0 && currentAnimation != "Attack Range 1"))) //Detenemos el walk-cycle a la izquierda cuando presiona disparo
-            {
-                direction = Direction.Left;
+
+
+        if (Input.GetAxis("Horizontal") < 0 && !GroundAttack())
+        {
+            direction = Direction.Left;
             walkSpeed -= acceleration * Time.deltaTime;
             if (walkSpeed > 0)
                 walkSpeed -= acceleration * Time.deltaTime;
         }
-        //else if (Input.GetAxis("Horizontal") > 0 && currentAnimation != "Attack Melee 1")
-        else if ((Input.GetAxis("Horizontal") > 0 && currentAnimation != "Attack Melee 1") && ((Input.GetAxis("Horizontal") > 0 && currentAnimation != "Attack Range 1"))) //Detenemos el walk-cycle a la izquierda cuando presiona disparo
+        else if (Input.GetAxis("Horizontal") > 0 && !GroundAttack())
         {
             direction = Direction.Right;
             walkSpeed += acceleration * Time.deltaTime;
@@ -424,7 +445,7 @@ public class PlayerMovement : MonoBehaviour
         if (isDashing)
             return;
 
-        if (playerData.GetUpgrades("Weapon Melee") < 1) // Si no tienes el arma no puedes pegar o sea si no tienes el upgrade
+        if (playerData.meleeLvl < 1) // Si no tienes el arma no puedes pegar o sea si no tienes el upgrade
             return;
 
         if (Input.GetButtonDown("Attack Melee") && !myAnimator.GetBool("Attacking"))
@@ -442,8 +463,8 @@ public class PlayerMovement : MonoBehaviour
        if (isDashing)
             return;
 
-        //if (playerData.GetUpgrades("Weapon Melee") < 1) // Si no tienes el arma no puedes pegar o sea si no tienes el upgrade
-        //    return;
+        if (playerData.rangeLvl < 1 || playerData.ammo < 0) // Si no tienes el arma no puedes pegar o sea si no tienes el upgrade
+            return;
 
         if (Input.GetButtonDown("Attack Range") && !myAnimator.GetBool("Attacking"))
         {
@@ -453,6 +474,15 @@ public class PlayerMovement : MonoBehaviour
             else
                 myAnimator.Play("Attack Range", 0, 0f);
         }
+    }
+
+    void CreateProjectile()
+    {
+        var newProjectile = Instantiate(projectilePrefabs[playerData.rangeLvl - 1], projectilePoint.position, Quaternion.identity);
+        newProjectile.transform.localScale = new Vector2(transform.localScale.x, 1f);
+        newProjectile.transform.SetParent(FindObjectOfType<Instances>().projectiles);
+
+        playerData.ammo--;
     }
 
     void FlipPlayer()
@@ -474,7 +504,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool GroundCheckerIsTouchingGround()
     {
-        return groundChecker.IsTouchingLayers(LayerMask.GetMask("Ground", "Platforms")); //Le puse plataforms jajajxD es Platforms pñts
+        return groundChecker.IsTouchingLayers(LayerMask.GetMask("Ground", "Platforms")); //Le puse plataforms jajajxD es Platforms pï¿½ts
     }
     private bool FeetIsTouchingGround()
     {
@@ -499,6 +529,7 @@ public class PlayerMovement : MonoBehaviour
     private void DamageOn()
     {
         damageaArea.enabled = true;
+
     }
 
     private void DamageOff()
@@ -514,7 +545,9 @@ public class PlayerMovement : MonoBehaviour
         direction = positionX > transform.position.x ? Direction.Right : Direction.Left;
         FlipPlayer();
 
-        playerData.healthPoints = Mathf.Clamp(playerData.healthPoints - 1, 0, 999);
+        if(!GameManager.Instance.infiniteHealth)
+            playerData.healthPoints = Mathf.Clamp(playerData.healthPoints - 1, 0, 999);
+        //playerData.healthPoints = Mathf.Clamp(playerData.healthPoints - 1, 0, 999);
 
 
         walkSpeed = 0;
@@ -530,7 +563,7 @@ public class PlayerMovement : MonoBehaviour
 
         SFXManager.Instance.PlaySFX(SFXManager.SFXName.PlayerHurt); //Cambiar audio o sea el sonido.
 
-        if (playerData.healthPoints <= 0)
+        if(playerData.healthPoints <= 0)
         {
             FindObjectOfType<DataManager>().LoadData();
         }
@@ -570,6 +603,9 @@ public class PlayerMovement : MonoBehaviour
     {
         myAnimator.SetLayerWeight(1, playerData.meleeLvl == 2 ? 1 : 0);
         myAnimator.SetLayerWeight(2, playerData.meleeLvl == 3 ? 1 : 0);
+
+        myAnimator.SetLayerWeight(3, playerData.rangeLvl == 2 ? 1 : 0);
+        myAnimator.SetLayerWeight(4, playerData.rangeLvl == 3 ? 1 : 0);
     }
 
     public enum Direction //para guardar en una variable uno de los dos valores
@@ -577,4 +613,51 @@ public class PlayerMovement : MonoBehaviour
         Right,
         Left
     }
+
+    public void SwitchPowers() //NEW with MrDonGato y Ramiro
+    {
+        playerData = FindObjectOfType<PlayerData>();
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Debug.Log("funciona");
+            //Primero tenemos que conseguir el PowerUp de fuego y despues el de agua. Pa que sepas juan del futuro
+                switch (playerData.switchPower)
+                {
+                    case 0: //normal
+                        if(playerData.firePower == true)
+                        {
+                        playerData.switchPower = 1;
+                        }
+                        break;
+
+
+                    case 1: //Fuego
+                    if(playerData.waterPower == true)
+                    {
+                        playerData.switchPower = 2;
+                    }
+                    else
+                    {
+                        playerData.switchPower = 0;
+
+                    }
+                        break;
+
+                    case 2: //Agua
+                    playerData.switchPower = 0;
+                        break;
+                }
+                // playerData.switchPower = true;
+            
+
+
+        }
+        
+        //Cuando presiono la tecla A, 
+        //Sin haber agarrado ningun power Up no pasa nada.
+        //Pero si ya agarre un Item de un ElementalPower puedo cambiar de habilidad.
+
+    }
+
 }

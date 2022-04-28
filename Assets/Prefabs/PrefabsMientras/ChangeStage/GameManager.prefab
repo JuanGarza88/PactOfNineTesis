@@ -47,11 +47,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSpeed: 1
-  useTestValues: 0
+  useTestValues: 1
   stageObjectsVisible: 0
   ladderVisible: 0
   savingDisabled: 0
   invincibility: 0
+  infiniteHealth: 0
+  screenSize: {x: 15, y: 10}
+  cameraOffset: 1.5
   enterPoint: 0
   direction: 0
   saveSlot: 0
@@ -67,17 +70,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 752ce7a9e798ddf48b49a0f38ad3b93d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseHealthPoints: 4
+  baseHealthPoints: 5
+  baseAmmo: 25
   baseMeleeDamage: 2
   checkpoint: 0
-  weaponMeleeUpgrades: 
   healthUpgrades: 
+  ammoUpgrades: 
+  weaponMeleeUpgrades: 
+  weaponRangeUpgrades: 
   keys: 
+  powerUpDash: 0
+  firePower: 0
+  waterPower: 0
+  switchPower: 0
   greenKeyObtained: 0
   healthPointsMax: 0
   healthPoints: 0
+  ammoMax: 0
+  ammo: 0
   meleeLvl: 0
   meleeDamage: 0
+  rangeLvl: 0
 --- !u!114 &3967064257623010133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -91,8 +104,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkpoint: 0
-  weaponMeleeUpgrades: 010000
+  healthPoints: 0
+  ammo: 0
   healthUpgrades: 000000000000000000000000
+  ammoUpgrades: 
+  weaponMeleeUpgrades: 010000
+  weaponRangeUpgrades: 000000
   keys: 0000000000
 --- !u!114 &7581154802177836886
 MonoBehaviour:

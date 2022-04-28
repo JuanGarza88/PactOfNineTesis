@@ -3322,6 +3322,10 @@ PrefabInstance:
       propertyPath: isActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1968806486951603240, guid: 1d4a84dd767608645866ddba4121f31a, type: 3}
+      propertyPath: leverElement
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2265390219416452770, guid: 1d4a84dd767608645866ddba4121f31a, type: 3}
       propertyPath: m_RootOrder
       value: 0

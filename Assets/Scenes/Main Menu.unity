@@ -759,6 +759,26 @@ PrefabInstance:
       propertyPath: weaponMeleeUpgrades.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3967064257623010133, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
+      propertyPath: healthUpgrades.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3967064257623010133, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
+      propertyPath: healthUpgrades.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3967064257623010133, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
+      propertyPath: healthUpgrades.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3967064257623010133, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
+      propertyPath: healthUpgrades.Array.data[3]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3967064257623010133, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
+      propertyPath: weaponMeleeUpgrades.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4704122042652152865, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
       propertyPath: m_Name
       value: GameManager

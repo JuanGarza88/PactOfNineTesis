@@ -12,12 +12,20 @@ public class StageManager : MonoBehaviour
     GameManager gameManager;
 
     PlayerMovement player;
+    [HideInInspector] public float leftBoundary, rightBoundary;
     void Start()
     {
         gameManager = FindObjectOfType<GameManager>();
         player = Instantiate(playerPrefab, enterPonts[gameManager.enterPoint].position, Quaternion.identity);
         player.direction = gameManager.direction;
         player.Initialize();
+
+        leftBoundary = 0;
+        rightBoundary = gameManager.screenSize.x * size.x;
+
+        Debug.Log(leftBoundary);
+        Debug.Log(rightBoundary);
+      
 
         FindObjectOfType<CameraController>().Initialize();
 
@@ -37,6 +45,7 @@ public class StageManager : MonoBehaviour
         var blocks = FindObjectsOfType<Block>();
         var items = FindObjectsOfType<Item>();
         var checkpoints = FindObjectsOfType<Checkpoint>();
+        var enemies = FindObjectsOfType<IniDirection>(); //Todos los enemigos que tengan este componente van a voltear donde aparezca el jugador
 
         foreach (var ladder in ladders) //LADDERS//
         {
@@ -61,6 +70,11 @@ public class StageManager : MonoBehaviour
         foreach (var checkpoint in checkpoints)      //CHECKPOINTS//
         {
             checkpoint.Initialize();
+        }
+
+        foreach (var enemy in enemies)      //Enemigos//
+        {
+            enemy.Initialize();
         }
     }
 
