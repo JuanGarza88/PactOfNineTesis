@@ -8,6 +8,13 @@ public class Lever : MonoBehaviour
     [SerializeField] public string id;
     [SerializeField] bool isActive;
 
+    /// LEVER ELEMENT
+    /// 
+   [SerializeField] int leverElement = 0;
+
+
+    /// </summary>
+
 
     [Header("Other")]
     [SerializeField] Sprite activeSprite;
@@ -17,14 +24,19 @@ public class Lever : MonoBehaviour
     List<Block> blockList;
     List<Lever> leverList;
 
+    
+    PlayerData playerData;
+
     SpriteRenderer spriteRenderer;
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = isActive ? activeSprite : inactiveSprite;
+        spriteRenderer.sprite = isActive ? activeSprite : inactiveSprite; //manera reducida de expresar if.
 
         GetLinkedObjects();
         UpdateLinkedObjects();
+
+        GetComponent<BoxCollider2D>(); // 
     }
 
     public void SetActive(bool active)
@@ -35,6 +47,7 @@ public class Lever : MonoBehaviour
 
     private void GetLinkedObjects()
     {
+
         blockList = new List<Block> { };
         leverList = new List<Lever> { };
 
@@ -58,10 +71,24 @@ public class Lever : MonoBehaviour
         //if (isActive)  //esto es por si  lo queremos activar 1 vez y se quede para siempre activado
         //    return; 
 
-        SFXManager.Instance.PlaySFX(SFXManager.SFXName.Locking);//CAMBIAR SONIDO DE SWITCHES
-        isActive = !isActive;
-        spriteRenderer.sprite = isActive ? activeSprite : inactiveSprite;
-        UpdateLinkedObjects();
+        
+
+        playerData = FindObjectOfType<PlayerData>();
+        if (leverElement == playerData.switchPower)
+        {
+            Debug.Log("Si son del mismo elemento ");
+            SFXManager.Instance.PlaySFX(SFXManager.SFXName.Locking);//CAMBIAR SONIDO DE SWITCHES
+
+            isActive = !isActive;
+            spriteRenderer.sprite = isActive ? activeSprite : inactiveSprite;
+            UpdateLinkedObjects();
+
+
+        }
+        else
+        {
+            Debug.Log("No es");
+        }
     }
 
     private void UpdateLinkedObjects()
@@ -77,5 +104,17 @@ public class Lever : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         TriggerLever();
+        if (other.GetComponentInParent<PlayerProjectile>())
+            other.GetComponentInParent<PlayerProjectile>().Hit();
     }
+
+    //private void DetectElementLever()
+    //{
+    //    if{leverElement = 0}
+    //    {
+    //        se
+    //    }
+    //}
+
+   
 }

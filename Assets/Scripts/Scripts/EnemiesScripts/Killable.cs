@@ -8,9 +8,11 @@ public class Killable : MonoBehaviour
     [SerializeField] int healthPoints;
     [SerializeField] float hitTime, deadTime, changeTime;
     [SerializeField] Transform sparkPoint; //El efecto de sangre que son "particulas"
-    [SerializeField] GameObject sparkPrefab; //Guardar el gameobject 
+    [SerializeField] GameObject sparkPrefab, explosionPrefab; //Guardar el gameobject o sea el prefab
+    [SerializeField] Collider2D hitbox;
 
     [SerializeField] GameObject healthDropPrefab;
+    [SerializeField] GameObject ammoDropPrefab;
 
     Rigidbody2D rb;
     Animator myAnimator;
@@ -19,6 +21,8 @@ public class Killable : MonoBehaviour
 
     int animationPhase = 0;
     float damageCounter, changeCounter; 
+    bool explosion; //para saber cuando se genera la explosion
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -32,6 +36,7 @@ public class Killable : MonoBehaviour
     private void Update()
     {
         DamageAnimation();
+        AddExplosions();
     }
 
     private void DamageAnimation()
@@ -39,7 +44,6 @@ public class Killable : MonoBehaviour
         if (damageCounter > 0)
         {
             damageCounter = Mathf.Clamp(damageCounter -= Time.deltaTime, 0, 999);
-
             changeCounter = Mathf.Clamp(changeCounter -= Time.deltaTime, 0, 999);
 
             if(changeCounter == 0)
@@ -53,7 +57,8 @@ public class Killable : MonoBehaviour
                 Unfrezze();
                 myAnimator.SetFloat("Speed", 1);
                 myAnimator.SetLayerWeight(1, 0);
-
+                if (healthPoints == 0)
+                   Destroy(gameObject);
             }
         }
             
@@ -64,21 +69,18 @@ public class Killable : MonoBehaviour
         if (healthPoints == 0)
             return; //return sirve para cortar codigo 
 
+        Debug.Log(damage);
         Frezee();
         healthPoints = Mathf.Clamp(healthPoints - damage, 0, 999);
         AddSpark(direction);
         myAnimator.SetFloat("Speed", 0);
+        animationPhase = 1;
         changeCounter = changeTime;
 
-        if (healthPoints > 0)
+        switch(healthPoints > 0)
         {
-            damageCounter = hitTime;
-        }
-        else
-        {
-            CreateDrops();
-            Destroy(gameObject);
-
+            case true: damageCounter = hitTime; break;
+            case false: Die(); break;
         }
     }
 
@@ -94,6 +96,15 @@ public class Killable : MonoBehaviour
         rb.velocity = savedVelocity;
     }
 
+    void Die()
+    {
+        hitbox.enabled = false;
+        if (GetComponent<Harmful>()) //Buscamos si el enemigo tiene el elemento harmful 
+            GetComponent<Harmful>().active = false;
+        CreateDrops();
+        damageCounter = deadTime;
+    }
+
     private void AddSpark(float direction)
     {
         var newSpark = Instantiate(sparkPrefab, sparkPoint.position, Quaternion.identity);
@@ -107,11 +118,36 @@ public class Killable : MonoBehaviour
         Debug.Log(randomNumber);
         if(randomNumber < 4)
         {
+            Debug.Log("Health Drop");
             var newDrop = Instantiate(healthDropPrefab, sparkPoint.position, Quaternion.identity);
-
         }
-
-
+        else if (randomNumber < 7)
+        {
+            Debug.Log("Ammo Drop");
+            var newDrop = Instantiate(ammoDropPrefab, sparkPoint.position, Quaternion.identity);
+        }
+        else
+        {
+            Debug.Log("No Drop");
+        }
     }
 
+    void AddExplosions()
+    {
+        if (healthPoints > 0)
+            return;
+
+        if(damageCounter < .65f && !explosion)
+        {
+            explosion = true;
+            var newExplosion = Instantiate(explosionPrefab, sparkPoint.position, Quaternion.identity);
+            newExplosion.transform.localScale = transform.localScale;
+
+        }
+    }
+
+    public bool IsStunned()
+    {
+        return damageCounter > 0;
+    }
 }

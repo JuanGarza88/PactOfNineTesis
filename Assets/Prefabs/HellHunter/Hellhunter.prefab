@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 179229009747824119}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02, y: -0.904, z: 0}
+  m_LocalPosition: {x: -0.034, y: -0.904, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5657866744073560528}
@@ -233,6 +233,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.35, y: 0.1}
   m_EdgeRadius: 0
+--- !u!1 &2384644380053744989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2945780900459303825}
+  m_Layer: 0
+  m_Name: Projectile Point
+  m_TagString: Untagged
+  m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2945780900459303825
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2384644380053744989}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.451, y: -0.065, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5657866744073560528}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6933940269069572084
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,7 +301,7 @@ PolygonCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6933940269069572084}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -289,11 +319,11 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 0.45, y: 0.7}
-      - {x: 0.3, y: 0.1}
-      - {x: 0.75, y: 0.1}
-      - {x: 1.4, y: 0.3}
-      - {x: 1.55, y: 0.7}
+    - - {x: 0.10212423, y: 0.98037755}
+      - {x: 0.035199076, y: -0.01942005}
+      - {x: 0.7032704, y: 0.3855696}
+      - {x: 0.7873232, y: 0.4713418}
+      - {x: 0.7815579, y: 0.788267}
 --- !u!1 &7112357043199716453
 GameObject:
   m_ObjectHideFlags: 0
@@ -319,7 +349,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7112357043199716453}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02, y: -0.904, z: 0}
+  m_LocalPosition: {x: -0.034, y: -0.909, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5657866744073560528}
@@ -338,7 +368,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.05}
+  m_Offset: {x: 0, y: -0.06}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -349,7 +379,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.1}
+  m_Size: {x: 0.5, y: 0.13}
   m_EdgeRadius: 0
 --- !u!1 &8149486067089527318
 GameObject:
@@ -452,6 +482,7 @@ Transform:
   - {fileID: 3494816285398627052}
   - {fileID: 6801807009937399900}
   - {fileID: 5791870116316527790}
+  - {fileID: 2945780900459303825}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -552,7 +583,7 @@ MonoBehaviour:
   climbingAnimationDuration: 0.2
   dashSpeed: 20
   dashDuration: 0.2
-  dashAllow: 2
+  dashAllow: 1
   jumpSpeed: 10
   jumpDownSpeed: -2
   jumpImpulse: 6
@@ -560,6 +591,11 @@ MonoBehaviour:
   fallSpeedMax: -28
   jumpsAllowed: 1
   gravityScale: 5
+  projectilePrefabs:
+  - {fileID: 1075015172020699981, guid: f8a8fe42f8c799f4792de53c12e8fae9, type: 3}
+  - {fileID: 1075015172020699981, guid: 1bdc8d0dcab43e747bdc9ac9f8fbdac1, type: 3}
+  - {fileID: 1075015172020699981, guid: 02ed42eb369c1fa48a8697c29be6f114, type: 3}
+  projectilePoint: {fileID: 2945780900459303825}
   damageThrowHorizontal: 6
   damageThrowVertical: 12
   recoverTime: 0.35

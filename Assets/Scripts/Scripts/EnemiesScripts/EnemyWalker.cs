@@ -11,6 +11,8 @@ public class EnemyWalker : MonoBehaviour
 
     Killable killable;
 
+    bool firstUpdate;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -19,13 +21,20 @@ public class EnemyWalker : MonoBehaviour
 
     void Update()
     {
-        //if()
+        if (killable.IsStunned())
+            return;
 
         Walk();
     }
 
     private void FixedUpdate()
     {
+        if (killable.IsStunned() || !firstUpdate)
+        {
+            firstUpdate = true;
+            return;
+        }
+
         if (IsTouchingWall() || IsCloseToEdge())
             Flip(); //darse la vuelta
     }
