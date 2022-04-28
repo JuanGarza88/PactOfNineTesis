@@ -85,6 +85,7 @@ public class Killable : MonoBehaviour
     void Frezee()
     {
         savedVelocity = rb.velocity;
+        //savedVelocity = rb.velocity /2; //Recuperan la mitad de su velocidad cuando salen de animacion congelada.
         rb.constraints = RigidbodyConstraints2D.FreezeAll;    //RigidbodyConstraints2D No jala con este pero sin el 2D si jala
     }
 
@@ -110,8 +111,6 @@ public class Killable : MonoBehaviour
             var newDrop = Instantiate(healthDropPrefab, sparkPoint.position, Quaternion.identity);
 
         }
-
-
     }
 
 }

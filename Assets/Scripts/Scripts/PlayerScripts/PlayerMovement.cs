@@ -129,6 +129,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.V) && dashCounter < dashAllow) 
         {
             isDashing = true;
+            myAnimator.SetBool("Dashing", true);
             float dashVelocity = direction.Equals(Direction.Right) ? dashSpeed : -dashSpeed;
             rb.velocity = new Vector2(dashVelocity, 0f);
             rb.gravityScale = 0f;
@@ -140,7 +141,7 @@ public class PlayerMovement : MonoBehaviour
             canGetImpulse = false;
             jumpTimeCounter = jumpEnd;
             myAnimator.SetBool("Jumping", false);
-            
+
         }
                
     }
@@ -148,6 +149,7 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator DashCorroutine()
     {
         yield return new WaitForSeconds(dashDuration);
+        myAnimator.SetBool("Dashing", false); 
         isDashing = false;
 
         rb.gravityScale = gravityScale;
@@ -336,14 +338,16 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isDashing)
             return;
-        if (Input.GetAxis("Horizontal") < 0 && currentAnimation != "Attack Melee 1")
-        {
-            direction = Direction.Left;
+        //if (Input.GetAxis("Horizontal") < 0 && currentAnimation != "Attack Melee 1")
+        if ((Input.GetAxis("Horizontal") < 0 && currentAnimation != "Attack Melee 1") && ((Input.GetAxis("Horizontal") < 0 && currentAnimation != "Attack Range 1"))) //Detenemos el walk-cycle a la izquierda cuando presiona disparo
+            {
+                direction = Direction.Left;
             walkSpeed -= acceleration * Time.deltaTime;
             if (walkSpeed > 0)
                 walkSpeed -= acceleration * Time.deltaTime;
         }
-        else if (Input.GetAxis("Horizontal") > 0 && currentAnimation != "Attack Melee 1")
+        //else if (Input.GetAxis("Horizontal") > 0 && currentAnimation != "Attack Melee 1")
+        else if ((Input.GetAxis("Horizontal") > 0 && currentAnimation != "Attack Melee 1") && ((Input.GetAxis("Horizontal") > 0 && currentAnimation != "Attack Range 1"))) //Detenemos el walk-cycle a la izquierda cuando presiona disparo
         {
             direction = Direction.Right;
             walkSpeed += acceleration * Time.deltaTime;
@@ -526,7 +530,7 @@ public class PlayerMovement : MonoBehaviour
 
         SFXManager.Instance.PlaySFX(SFXManager.SFXName.PlayerHurt); //Cambiar audio o sea el sonido.
 
-        if(playerData.healthPoints == 0)
+        if (playerData.healthPoints <= 0)
         {
             FindObjectOfType<DataManager>().LoadData();
         }
