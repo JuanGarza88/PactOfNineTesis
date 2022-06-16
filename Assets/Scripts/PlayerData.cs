@@ -25,6 +25,8 @@ public class PlayerData : MonoBehaviour
     public bool firePower = false;
     public bool waterPower;
 
+    public bool extraJump;
+
     public int switchPower = 0; 
     // 0 normal
     // 1 Fuego

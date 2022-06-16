@@ -51,7 +51,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float damageThrowVertical;
     [SerializeField] float recoverTime; //Tiempo de recuperacion, recuperas control
     [SerializeField] float invincibilityTime; //Tiempo que dura el periodo de inbunerabilidad.
-    
+
+    public int JumpAllowed => jumpsAllowed + (playerData.extraJump ? 1 : 0);
+
     private Rigidbody2D rb;
     Animator myAnimator;
     Blinker blinker;
@@ -399,7 +401,7 @@ public class PlayerMovement : MonoBehaviour
         if (isJumpingDown)
             return;
 
-        if (Input.GetButtonDown("Jump") && jumpCounter < jumpsAllowed) //El contador sea menor a los saltos permitidos.
+        if (Input.GetButtonDown("Jump") && jumpCounter < JumpAllowed) //El contador sea menor a los saltos permitidos.
         {
             jumpCounter++; //es lo mismo poner ++ y = jumpCounter + 1;
             canGetImpulse = true;
@@ -565,8 +567,14 @@ public class PlayerMovement : MonoBehaviour
 
         if(playerData.healthPoints <= 0)
         {
-            FindObjectOfType<DataManager>().LoadData();
+           // FindObjectOfType<DataManager>().LoadData();
+            Dead();
         }
+    }
+
+    private void Dead()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Game Over");
     }
 
     private bool InvincibilityOn()
