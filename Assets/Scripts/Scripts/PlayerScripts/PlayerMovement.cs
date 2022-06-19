@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public static PlayerMovement instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     [Header("Character")]
     [SerializeField] string characterName;
 
@@ -29,7 +36,15 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float dashSpeed;
     [SerializeField] float dashDuration;
     [SerializeField] int dashAllow;
-    
+
+
+    [Header("After-Image")]
+    [SerializeField] SpriteRenderer theSr, afterImage;
+    [SerializeField] public float afterImageLifetime, timeBetweenAfterImage;
+    [SerializeField] public float afterImageCounter;
+    [SerializeField] public Color afterImageColor;
+
+
 
     [Header("Jump")]
     [SerializeField] float jumpSpeed;
@@ -51,9 +66,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float damageThrowVertical;
     [SerializeField] float recoverTime; //Tiempo de recuperacion, recuperas control
     [SerializeField] float invincibilityTime; //Tiempo que dura el periodo de inbunerabilidad.
-    
+
+
+    [Header("Transicion")]//es el fade in fade out cuando cambia de escena
+    [SerializeField] public  bool canMove;
+
+
     private Rigidbody2D rb;
-    Animator myAnimator;
+    public Animator myAnimator;
     Blinker blinker;
 
     PlayerData playerData; //en este Script esta la vida del personaje 
@@ -70,6 +90,9 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isJumpingDown;
 
+
+
+
     private int dashCounter;
 
     Ladder activeLadder;
@@ -84,11 +107,13 @@ public class PlayerMovement : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         blinker = GetComponent<Blinker>();
         playerData = FindObjectOfType<PlayerData>(); //Esta en el GameManager para que no se elimine y se peda pasar de stage.
+        canMove = true; //Siempre te puedes mover
 
         UpdateAnimations();
 
         
     }
+
 
     
     void Update() //Checar lo de el movimiento que la aceleracion comience en 1 y -1///
@@ -101,6 +126,8 @@ public class PlayerMovement : MonoBehaviour
 
         SwitchPowers(); //poderes jaj
 
+
+
         if (!(GroundAttack() || AirAttack()))
         {
             DamageOff();
@@ -112,15 +139,25 @@ public class PlayerMovement : MonoBehaviour
             Climb();
             if(!myAnimator.GetBool("Climbing"))
             {
-                Dash();
-                Walk();
-                JumpDown();
-                Jump();
-                ShowJump();
-                MeleeAttack();
-                RangeAttack();
-                FlipPlayer();
+                if(canMove)
+                {
+                    Dash();
+                    Walk();
+                    JumpDown();
+                    Jump();
+                    ShowJump();
+                    MeleeAttack();
+                    RangeAttack();
+                    FlipPlayer();
+                }
+                else
+                {
+                    rb.velocity = Vector2.zero;
+                }
+               
             }
+
+
         }
 
         activeLadder = null;
@@ -146,9 +183,11 @@ public class PlayerMovement : MonoBehaviour
         if (myAnimator.GetBool("Attacking"))
             return;
 
-        if (Input.GetKeyDown(KeyCode.V) && dashCounter < dashAllow && playerData.powerUpDash == true) 
+
+
+        if (Input.GetKeyDown(KeyCode.V) && dashCounter < dashAllow && playerData.powerUpDash == true)
         {
-            
+
             isDashing = true;
             myAnimator.SetBool("Dashing", true);
             float dashVelocity = direction.Equals(Direction.Right) ? dashSpeed : -dashSpeed;
@@ -158,13 +197,31 @@ public class PlayerMovement : MonoBehaviour
             dashCounter++;
             StartCoroutine(DashCorroutine());
 
+           
             //Reset Jump
             canGetImpulse = false;
             jumpTimeCounter = jumpEnd;
             myAnimator.SetBool("Jumping", false);
 
+            ShowAfterImage();
+
+
+
         }
-        
+
+    }
+
+    public void ShowAfterImage()
+    {
+        //se obtiene la imagen del jugador como 
+        SpriteRenderer image = Instantiate(afterImage, transform.position, transform.rotation);
+        image.sprite = theSr.sprite;
+        image.transform.localScale = transform.localScale;
+        image.color = afterImageColor;
+
+        Destroy(image.gameObject, afterImageLifetime);
+
+            
     }
 
     private IEnumerator DashCorroutine()
@@ -174,6 +231,10 @@ public class PlayerMovement : MonoBehaviour
         isDashing = false;
 
         rb.gravityScale = gravityScale;
+
+
+
+
     }
 
     private void FixedUpdate()

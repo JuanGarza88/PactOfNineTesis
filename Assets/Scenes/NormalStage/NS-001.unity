@@ -3826,9 +3826,17 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 132284844338906508, guid: 8c10c5c0cac5c3f4ca86f658cf6da3c6, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 8137719611329882288, guid: a7aaf76219d20154baf79009c7bf81dc, type: 3}
+    - target: {fileID: 132284844338906508, guid: 8c10c5c0cac5c3f4ca86f658cf6da3c6, type: 3}
       propertyPath: direction
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 132284844338906508, guid: 8c10c5c0cac5c3f4ca86f658cf6da3c6, type: 3}
+      propertyPath: exitPoint
+      value: 
+      objectReference: {fileID: 132284844049761673}
     - target: {fileID: 132284844338906508, guid: 8c10c5c0cac5c3f4ca86f658cf6da3c6, type: 3}
       propertyPath: enterPoint
       value: 0
@@ -3836,6 +3844,10 @@ PrefabInstance:
     - target: {fileID: 132284844338906508, guid: 8c10c5c0cac5c3f4ca86f658cf6da3c6, type: 3}
       propertyPath: nextStageName
       value: NS-003
+      objectReference: {fileID: 0}
+    - target: {fileID: 132284844338906508, guid: 8c10c5c0cac5c3f4ca86f658cf6da3c6, type: 3}
+      propertyPath: movePlayerSpeed
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 132284844338906511, guid: 8c10c5c0cac5c3f4ca86f658cf6da3c6, type: 3}
       propertyPath: m_Name
@@ -3846,6 +3858,11 @@ PrefabInstance:
 --- !u!4 &132284844049761672 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 132284844338906506, guid: 8c10c5c0cac5c3f4ca86f658cf6da3c6, type: 3}
+  m_PrefabInstance: {fileID: 132284844049761671}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &132284844049761673 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9116169114020166584, guid: 8c10c5c0cac5c3f4ca86f658cf6da3c6, type: 3}
   m_PrefabInstance: {fileID: 132284844049761671}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &742084087927640790
