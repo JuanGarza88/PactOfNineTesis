@@ -100,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
 
     private string currentAnimation;
 
-    private bool isDashing;
+    public bool isDashing;
     public void Initialize()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -178,7 +178,12 @@ public class PlayerMovement : MonoBehaviour
         playerData = FindObjectOfType<PlayerData>();
 
         if (isDashing)
+        {
+            afterImageCounter -= Time.deltaTime;
+            if(afterImageCounter < 0)
+                ShowAfterImage();
             return;
+        }
 
         if (myAnimator.GetBool("Attacking"))
             return;
@@ -196,32 +201,33 @@ public class PlayerMovement : MonoBehaviour
 
             dashCounter++;
             StartCoroutine(DashCorroutine());
+            afterImageCounter = timeBetweenAfterImage;
 
-           
+
             //Reset Jump
             canGetImpulse = false;
             jumpTimeCounter = jumpEnd;
             myAnimator.SetBool("Jumping", false);
 
-            ShowAfterImage();
 
 
 
         }
 
+
+
     }
 
     public void ShowAfterImage()
     {
-        //se obtiene la imagen del jugador como 
+        //se obtiene la imagen del jugador como
+        afterImage.gameObject.SetActive(true);
         SpriteRenderer image = Instantiate(afterImage, transform.position, transform.rotation);
         image.sprite = theSr.sprite;
         image.transform.localScale = transform.localScale;
         image.color = afterImageColor;
 
         Destroy(image.gameObject, afterImageLifetime);
-
-            
     }
 
     private IEnumerator DashCorroutine()
@@ -231,16 +237,17 @@ public class PlayerMovement : MonoBehaviour
         isDashing = false;
 
         rb.gravityScale = gravityScale;
-
-
-
+        afterImage.gameObject.SetActive(false);
 
     }
 
     private void FixedUpdate()
     {
-        if (isDashing)//
+        if (isDashing)
+        {
             return;
+        }
+
 
         if (canGetImpulse)
         {
