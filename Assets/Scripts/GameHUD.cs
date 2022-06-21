@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class GameHUD : MonoBehaviour
 {
+
     [SerializeField] Text weaponText;
 
     [SerializeField] Image[] hearts;//, heartsImages;  //contener imagenes de los corazones.
@@ -24,7 +25,7 @@ public class GameHUD : MonoBehaviour
     {
         UpdateHealth();
 
-        
+
         if (playerData.UpgradeCount(playerData.weaponMeleeUpgrades) == 0)
             weaponText.text = "--";
         else
