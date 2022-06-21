@@ -37,10 +37,13 @@ public class DataManager : MonoBehaviour
         /////////0|||||||||||||||1||||||||||||2|||||||||||||||||3||||||||||||||||4||||||||||5|||||||6|||||||7||||8|||||||9|||||10|||||11|||
         ///////////////falta poner powerups de dash,doubleJump,fire,water.\\\\\\\\\\\\Preguntar a LordMarco.
 
-        string saveString = PlayerPrefs.GetString(gameManager.SaveSlotKey(), "5|0|0|00000000000|00000000000|000|000|00000|0|0|0|0"); //cadena de texto
-        Debug.Log("Loading Data: " + saveString);
+        string saveData = PlayerPrefs.GetString(gameManager.SaveSlotKey(), "5|0|0|00000000000|00000000000|000|000|00000|0|0|0|0"); //cadena de texto
+        Debug.Log("Loading Data: " + saveData);
+        Debug.Log(playerData.gameObject.name,playerData.gameObject);
+        Debug.Log("Count" + FindObjectsOfType<PlayerData>().Length);
 
-        string[] saveStrings = saveString.Split('|');
+        string[] saveStrings = saveData.Split('|');
+        
         //-----------------------------cosas que se guardan, ponte altiro,tq:)--------------------------------------------\\
         playerData.healthPoints = int.Parse(saveStrings[0]);
 
@@ -59,14 +62,15 @@ public class DataManager : MonoBehaviour
 
         playerData.keys = StringToBoolArray(saveStrings[7]);
         //______________________Preguntar si se cambia el 0_________________\\
-        playerData.firePower = StringToBoolArray(saveString[8].ToString())[0];
+        playerData.firePower = StringToBoolArray(saveStrings[8].ToString())[0];
 
-        playerData.waterPower = StringToBoolArray(saveString[9].ToString())[0]; 
+        playerData.waterPower = StringToBoolArray(saveStrings[9].ToString())[0]; 
 
-        playerData.powerUpDash = StringToBoolArray(saveString[10].ToString())[0];
+        playerData.powerUpDash = StringToBoolArray(saveStrings[10].ToString())[0];
 
-        playerData.extraJump = StringToBoolArray(saveString[11].ToString())[0];
-
+        playerData.extraJump = StringToBoolArray(saveStrings[11].ToString())[0];
+        Debug.Log("Extra JumpSave: " + saveStrings[11]);
+        Debug.Log("Extra Jump: " + playerData.extraJump);
         playerData.UpdateStats();
         //esto se puede hacer mas sencillo. La parte "gameManager.enterPoint = 2;" puede cambiar del 2 al 1 ya que es 
         /*???? ya que es que?? Juan del pasado. atte: Juan del presente*/
@@ -179,10 +183,6 @@ public class DataManager : MonoBehaviour
         saveString += "|";
 
         saveString += playerData.firePower ? "1" : "0";  //8
-
-        saveString += "|";
-
-        saveString += playerData.waterPower ? "1" : "0"; //9
 
         saveString += "|";
 
