@@ -11,7 +11,7 @@ public class MainMenu : MonoBehaviour
     {
         MusicPlayer.Instance.PlayTheme(MusicPlayer.ThemeName.Menu);
 
-        string saveString = PlayerPrefs.GetString("Player Data 1", "0|000|000000000000|00000");
+        string saveString = PlayerPrefs.GetString("Player Data 1", "0|000|000000000000|00000" /*"0|0|0|00000000000|00000000000|000|000|00000|0|0|0|0"*/);
         bool noData = saveString[0].ToString() == "0";
         if (noData)
             buttonText.text = "New Game";

@@ -67,6 +67,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float recoverTime; //Tiempo de recuperacion, recuperas control
     [SerializeField] float invincibilityTime; //Tiempo que dura el periodo de inbunerabilidad.
 
+    public int JumpAllowed => jumpsAllowed + (playerData.extraJump ? 1 : 0);
+   
+
+
+
 
     [Header("Transicion")]//es el fade in fade out cuando cambia de escena
     [SerializeField] public  bool canMove;

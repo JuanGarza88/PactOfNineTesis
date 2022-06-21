@@ -17,7 +17,7 @@ public class SaveFileTab : MonoBehaviour
 
     public void ShowSaveData(string saveString)
     {
-        
+        //----------------------Incompleto------------------------\\
         bool noData = saveString[0].ToString() == "0";
         if (!noData)
         {
@@ -25,10 +25,10 @@ public class SaveFileTab : MonoBehaviour
 
             string[] saveStrings = saveString.Split('|');
             
-            weaponMeleeUpgrades = StringToBoolArray(saveStrings[1]);
-            healthUpgrades = StringToBoolArray(saveStrings[2]);
-            keys = StringToBoolArray(saveStrings[3]);
-            healthPointsMax = 4 + UpgradeCount(healthUpgrades);
+            weaponMeleeUpgrades = StringToBoolArray(saveStrings[5]);
+            healthUpgrades = StringToBoolArray(saveStrings[3]); //era el 2
+            keys = StringToBoolArray(saveStrings[7]); //de 3 le puse 7 y funciono, preguntar mejor
+            healthPointsMax = 5 + UpgradeCount(healthUpgrades); //estaba en 4 pero le puse 5
 
             for (int i = 0; i < heartsImages.Length; i++)
             {

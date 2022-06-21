@@ -26,21 +26,24 @@ public class DataManager : MonoBehaviour
         }
     }
 
-    public void LoadData() 
+    public void LoadData()
     {
         //Si ponemos mas cosas para guardar tenemos que aregar mas strings o sea cadena de texto\\
         gameManager = FindObjectOfType<GameManager>();
         playerData = FindObjectOfType<PlayerData>();
 
         //checkpoint | melee | health/Hearts | keys\\ OLD
-        //current health | current ammo | checkpoint | extra health/Hearts | extra ammo | melee | range | keys \\ New 
-        /////////0|||||||||||||||1||||||||||||2|||||||||||||||||3||||||||||||||||4||||||||||5|||||||6|||||||7||||||||
+        //current health | current ammo | checkpoint | extra health/Hearts | extra ammo | melee | range | keys | Fire | Water | Dash | ExtJump\\ New 
+        /////////0|||||||||||||||1||||||||||||2|||||||||||||||||3||||||||||||||||4||||||||||5|||||||6|||||||7||||8|||||||9|||||10|||||11|||
         ///////////////falta poner powerups de dash,doubleJump,fire,water.\\\\\\\\\\\\Preguntar a LordMarco.
 
-        string saveString =  PlayerPrefs.GetString(gameManager.SaveSlotKey(), "5|0|0|00000000000|00000000000|000|000|00000"); //cadena de texto
-        Debug.Log("Loading Data: " + saveString);
+        string saveData = PlayerPrefs.GetString(gameManager.SaveSlotKey(), "5|0|0|00000000000|00000000000|000|000|00000|0|0|0|0"); //cadena de texto
+        Debug.Log("Loading Data: " + saveData);
+        Debug.Log(playerData.gameObject.name,playerData.gameObject);
+        Debug.Log("Count" + FindObjectsOfType<PlayerData>().Length);
 
-        string[] saveStrings = saveString.Split('|');
+        string[] saveStrings = saveData.Split('|');
+        
         //-----------------------------cosas que se guardan, ponte altiro,tq:)--------------------------------------------\\
         playerData.healthPoints = int.Parse(saveStrings[0]);
 
@@ -50,6 +53,7 @@ public class DataManager : MonoBehaviour
 
         playerData.healthUpgrades = StringToBoolArray(saveStrings[3]);
 
+
         playerData.ammoUpgrades = StringToBoolArray(saveStrings[4]);
 
         playerData.weaponMeleeUpgrades = StringToBoolArray(saveStrings[5]);
@@ -57,7 +61,16 @@ public class DataManager : MonoBehaviour
         playerData.weaponRangeUpgrades = StringToBoolArray(saveStrings[6]);
 
         playerData.keys = StringToBoolArray(saveStrings[7]);
+        //______________________Preguntar si se cambia el 0_________________\\
+        playerData.firePower = StringToBoolArray(saveStrings[8].ToString())[0];
 
+        playerData.waterPower = StringToBoolArray(saveStrings[9].ToString())[0]; 
+
+        playerData.powerUpDash = StringToBoolArray(saveStrings[10].ToString())[0];
+
+        playerData.extraJump = StringToBoolArray(saveStrings[11].ToString())[0];
+        Debug.Log("Extra JumpSave: " + saveStrings[11]);
+        Debug.Log("Extra Jump: " + playerData.extraJump);
         playerData.UpdateStats();
         //esto se puede hacer mas sencillo. La parte "gameManager.enterPoint = 2;" puede cambiar del 2 al 1 ya que es 
         /*???? ya que es que?? Juan del pasado. atte: Juan del presente*/
@@ -113,6 +126,8 @@ public class DataManager : MonoBehaviour
 
         playerData.keys = testValues.keys;
 
+        
+
         playerData.UpdateStats();
 
         initialized = true;
@@ -122,21 +137,64 @@ public class DataManager : MonoBehaviour
 
     public void SaveData()
     {
-        string saveString = ""; //"0|000|000000000000|00000"
-        saveString += playerData.checkpoint + "|";
+        //------------Cmpleto-----------------\\
+        string saveString = ""; //"0|000|000000000000|00000" //checkpoint | melee | health/Hearts | keys\\ OLD
 
-        foreach (bool upgrade in playerData.weaponMeleeUpgrades)
-            saveString += upgrade ? "1" : "0"; //cada vez que agarremos un powerMelee si es vdd se pone un 1 y si no el 0.
+        //current health | current ammo | checkpoint | extra health/Hearts | ammoUpgrades | melee | range | keys \\ New 
+        /////////0|||||||||||||||1||||||||||||2|||||||||||||||||3||||||||||||||||4||||||||||5|||||||6|||||||7||||||||
+        ///////////////falta poner powerups de dash,doubleJump,fire,water.\\\\\\\\\\\\Preguntar a LordMarco.
+        ///// ahora tiene que estar "5|0|0|00000000000|00000000000|000|000|00000"
+        /////current health | current ammo | checkpoint | extra health/Hearts | extra ammo | melee | range | keys | Fire | Water | Dash | ExtJump\\ New 
+        /////////0|||||||||||||||1||||||||||||2|||||||||||||||||3||||||||||||||||4||||||||||5|||||||6|||||||7||||8|||||||9|||||10|||||11|||
+        ///"5|0|0|00000000000|00000000000|000|000|00000|0|0|0|0"\\\
 
-        saveString +=  "|";
+        saveString += playerData.healthPoints + "|"; //0 new
 
-        foreach (bool upgrade in playerData.healthUpgrades)
+        saveString += playerData.ammo + "|"; //1 new
+
+
+        saveString += playerData.checkpoint + "|"; //2 new
+
+        foreach (bool upgrade in playerData.healthUpgrades) // 3new
             saveString += upgrade ? "1" : "0";
 
+        saveString += "|";
+
+
+        foreach (bool upgrade in playerData.ammoUpgrades) // 4 new
+            saveString += upgrade ? "1" : "0"; 
+
         saveString +=  "|";
 
-        foreach (bool key in playerData.keys)
+        foreach (bool upgrade in playerData.weaponMeleeUpgrades) // 5
+            saveString += upgrade ? "1" : "0"; //cada vez que agarremos un powerMelee si es vdd se pone un 1 y si no el 0.
+
+        saveString += "|";
+
+        foreach (bool upgrade in playerData.weaponRangeUpgrades) // 6
+            saveString += upgrade ? "1" : "0"; 
+
+        saveString += "|";
+
+
+        foreach (bool key in playerData.keys) //7
             saveString += key ? "1" : "0";
+
+        saveString += "|";
+
+        saveString += playerData.firePower ? "1" : "0";  //8
+
+        saveString += "|";
+
+        saveString += playerData.waterPower ? "1" : "0"; //9
+
+        saveString += "|";
+
+        saveString += playerData.powerUpDash ? "1" : "0"; //10
+
+        saveString += "|";
+
+        saveString += playerData.extraJump ? "1" : "0"; //11
 
         PlayerPrefs.SetString(gameManager.SaveSlotKey(), saveString);
 

@@ -14,10 +14,9 @@ public class Item : MonoBehaviour
     PlayerMovement playerMovement;
     public void Initialize()
     {
-        boxCollider = GetComponent<BoxCollider2D>(); //
+        boxCollider = GetComponent<BoxCollider2D>(); 
         playerData = FindObjectOfType<PlayerData>();
-        //playerMovement = GetComponent<PlayerMovement>();
-
+        playerMovement = FindObjectOfType<PlayerMovement>();
         switch (itemName)
         {
             case "Health Upgrade" when playerData.healthUpgrades[id]: Destroy(gameObject); break;
@@ -25,6 +24,39 @@ public class Item : MonoBehaviour
             case "Weapon Melee" when playerData.weaponMeleeUpgrades[id]: Destroy(gameObject); break;
             case "Weapon Range" when playerData.weaponRangeUpgrades[id]: Destroy(gameObject); break;
             case "Key" when playerData.keys[id]: Destroy(gameObject); break;
+            case "Dash Upgrade" when playerData.powerUpDash:Destroy(gameObject); break;
+            case "Fire Upgrade" when playerData.firePower:Destroy(gameObject); break;
+            case "Water Upgrade" when playerData.waterPower:Destroy(gameObject); break;
+
+            case "Jump Upgrade" when playerData.extraJump : Destroy(gameObject); break;
+
+                
+                //if (itemName == "Dash Upgrade")
+                //{
+                //    playerData.powerUpDash = true;
+                //    Destroy(gameObject);
+                //}
+                //if (itemName == "Jump Upgrade")
+                //{
+                //    Debug.Log("FuncionaJump");
+                //    playerMovement.jumpsAllowed++;
+                //    Destroy(gameObject);
+                //}
+
+                //if (itemName == "Fire Upgrade")
+                //{
+                //    Debug.Log("TengoFire");
+                //    playerData.firePower = true;
+                //    playerData.switchPower = 1;
+                //    Destroy(gameObject);
+                //}
+                //if (itemName == "Water Upgrade")
+                //{
+                //    Debug.Log("TengoWater");
+                //    playerData.waterPower = true;
+                //    playerData.switchPower = 2;
+                //    Destroy(gameObject);
+                //}
         }
 
         //ES LO MISMO QUE ARRIBA\\
@@ -79,7 +111,7 @@ public class Item : MonoBehaviour
         if(itemName == "Jump Upgrade")
         {
             Debug.Log("FuncionaJump");
-            playerMovement.jumpsAllowed++;
+            playerData.extraJump = true;
             Destroy(gameObject);
         }
         if (itemName == "Fire Upgrade")
