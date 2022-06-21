@@ -8,14 +8,8 @@ public class Bullet : MonoBehaviour
     public Rigidbody2D rb;
     bool enterOnce = true;
     [SerializeField] public PlayerMovement player;
-    [SerializeField] public EnemyTurret turret;
     [SerializeField] public Transform target;
     [SerializeField] public Vector2 moveDirection;
-    void Start()
-    {
-
-        //rb.velocity = transform.right  * speed;
-    }
 
     private void Update()
     {

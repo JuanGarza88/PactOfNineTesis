@@ -12,6 +12,8 @@ public class UIController : MonoBehaviour
     public float fadeSpeed = 1f;
     private bool fadingToBlack, fadingFromBlack;
 
+    public Slider healthSlider;
+
     private void Awake()
     {
         if (instance == null)
@@ -25,17 +27,16 @@ public class UIController : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    public void UpdateHealth(int currentHealth, int maxHealth)
     {
-        
+        healthSlider.maxValue = maxHealth;
+        healthSlider.value = currentHealth;
     }
 
     // Update is called once per frame
     void Update()
     {
         FadingController(); // Controla el fadingtoblack o fadingFromBlack.
-
     }
 
     private void FadingController()

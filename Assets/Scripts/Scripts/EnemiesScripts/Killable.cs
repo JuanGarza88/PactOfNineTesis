@@ -14,6 +14,8 @@ public class Killable : MonoBehaviour
     [SerializeField] GameObject healthDropPrefab;
     [SerializeField] GameObject ammoDropPrefab;
 
+    [SerializeField] bool isBoss;
+
     Rigidbody2D rb;
     Animator myAnimator;
 
@@ -30,6 +32,8 @@ public class Killable : MonoBehaviour
 
         myAnimator.SetFloat("Speed", 1);
         myAnimator.SetLayerWeight(1, 0);
+
+        IsThisABossEnemy();
     }
 
 
@@ -66,8 +70,19 @@ public class Killable : MonoBehaviour
 
     public void ProcessDamage(int damage, float direction)
     {
-        if (healthPoints == 0)
+        //if (healthPoints == 0)
+        if (healthPoints <= 0)
+        {
+            Debug.Log("Checa si soy menor a 0 damage");
+
+            if (isBoss)
+            {
+                Debug.Log("Acabando la boss battle");
+
+                BossHealthSlider.instance.bossBattle.EndingBossBattle();
+            }
             return; //return sirve para cortar codigo 
+        }
 
         Debug.Log(damage);
         Frezee();
@@ -81,6 +96,12 @@ public class Killable : MonoBehaviour
         {
             case true: damageCounter = hitTime; break;
             case false: Die(); break;
+        }
+
+        if (isBoss)
+        {
+            BossHealthSlider.instance.bossBattle.isDamaged = true;
+            BossHealthSlider.instance.UpdateHealthSlider(healthPoints);
         }
     }
 
@@ -150,5 +171,19 @@ public class Killable : MonoBehaviour
     public bool IsStunned()
     {
         return damageCounter > 0;
+    }
+
+    public int CurrentHealth()
+    {
+        return healthPoints;
+    }
+
+    private void IsThisABossEnemy()
+    {
+        isBoss = false;
+        if ( gameObject.GetComponent<BossHealthSlider>())
+        {
+            isBoss = true;
+        }
     }
 }

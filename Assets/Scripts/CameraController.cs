@@ -14,6 +14,7 @@ public class CameraController : MonoBehaviour
     Camera gameCamera;
 
 
+    public bool isBossCamActive;
 
     public void Initialize()
     {
@@ -24,13 +25,17 @@ public class CameraController : MonoBehaviour
 
         stageSize = stageManager.size;
         screenSize = gameManager.screenSize;
+        isBossCamActive = false;
 
         SetBoundaries();
     }
 
     void Update()
     {
-        MoveCamera();
+        if (!isBossCamActive)
+        {
+            MoveCamera();
+        }
     }
 
     private void MoveCamera()
@@ -40,6 +45,18 @@ public class CameraController : MonoBehaviour
         float newPositionY = Mathf.Clamp(player.position.y + gameManager.cameraOffset, downBoundary, upBoundary);
 
         gameCamera.transform.position = new Vector3 (newPositionX, newPositionY, gameCamera.transform.position.z);
+    }
+
+    public void BossCamera( Transform pos1, Transform pos2, float speed)
+    {
+        gameCamera.transform.position = Vector3.MoveTowards(gameCamera.transform.position,
+                                                            pos2.position,
+                                                            speed * Time.deltaTime);
+    }
+
+    public void BossBattleCameraStatus(bool p_isBossBattleActive)
+    {
+        isBossCamActive = p_isBossBattleActive;
     }
 
     void SetBoundaries()
