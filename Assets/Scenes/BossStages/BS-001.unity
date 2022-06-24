@@ -299,7 +299,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 75379935}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5, y: -2.5, z: 0}
+  m_LocalPosition: {x: 5, y: -1.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 276322193}
@@ -438,7 +438,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 118599090}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: 1.5, z: 0}
+  m_LocalPosition: {x: -5.37, y: 1.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 276322193}
@@ -553,8 +553,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.030954361, y: 0.072226286}
-  m_Size: {x: 1.0619087, y: 2.226996}
+  m_Offset: {x: 0.7, y: 0.5}
+  m_Size: {x: 2.5, y: 2.5}
   m_Direction: 0
 --- !u!1 &188371090
 GameObject:
@@ -3616,6 +3616,7 @@ Transform:
   m_Children:
   - {fileID: 4839425}
   - {fileID: 173210447}
+  - {fileID: 1761921065}
   m_Father: {fileID: 977560546}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3659,12 +3660,12 @@ SpriteRenderer:
   m_SortingLayerID: -37099781
   m_SortingLayer: 8
   m_SortingOrder: 1
-  m_Sprite: {fileID: -3858331487878545982, guid: c75f0420140823842906680c4b219d33, type: 3}
+  m_Sprite: {fileID: 21300000, guid: db8c938d1c7fdc74cb7fd2f3ed47cd02, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.6, y: 2.8}
+  m_Size: {x: 5.233333, y: 4.3333335}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -3740,7 +3741,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossHealthSlider: {fileID: 1689120069}
-  killObject: {fileID: 822569253}
+  bossHealth: {fileID: 822569253}
+  isDamageable: 0
   bossBattle: {fileID: 977560547}
 --- !u!95 &822569256
 Animator:
@@ -3752,7 +3754,7 @@ Animator:
   m_GameObject: {fileID: 822569249}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 5d1e8ba8e51c1a9429ee75484c14513a, type: 2}
+  m_Controller: {fileID: 9100000, guid: eeb566d5b23da364bbf8fb6f7857a7df, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4051,6 +4053,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossCamPosition: {fileID: 1586218888}
   bossCamSpeed: 5
+  boss: {fileID: 822569250}
   threshold1: 21
   threshold2: 12
   activeTime: 3
@@ -4065,7 +4068,11 @@ MonoBehaviour:
   moveSpeed: 3
   anim: {fileID: 822569256}
   isDamaged: 0
-  boss: {fileID: 822569250}
+  isAttacking: 0
+  timeBetweenShots1: 1.5
+  timeBetweenShots2: 1
+  bullet: {fileID: 5725930769845943361, guid: ae0bcb81e87acb74196fb02eff615f49, type: 3}
+  shotPoint: {fileID: 1761921065}
 --- !u!1 &998046086
 GameObject:
   m_ObjectHideFlags: 0
@@ -5770,11 +5777,41 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1715510405}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5, y: -2.5, z: 0}
+  m_LocalPosition: {x: -5.37, y: -1.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 276322193}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1761921064
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1761921065}
+  m_Layer: 13
+  m_Name: Shot Point
+  m_TagString: Untagged
+  m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1761921065
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761921064}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.28, y: 0.15, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 822569250}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1774368497
 GameObject:
@@ -5879,7 +5916,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: THE BOSS
+  m_text: EYEDOLL
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

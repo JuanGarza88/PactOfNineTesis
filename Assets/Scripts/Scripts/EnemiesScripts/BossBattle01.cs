@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class BossBattle01 : MonoBehaviour
 {
+    [Header("Main Variables")]
     private CameraController bossCam;
     public Transform bossCamPosition;
     public float bossCamSpeed;
     private PlayerMovement player;
+    public Transform boss;
+    private bool battleEnded;
 
     // Phase Transition variables
-    public int threshold1, threshold2;
+    [Header("Transitions")]
+    public int threshold1;
+    public int threshold2;
     public float activeTime, fadeOutTime, inactiveTime; //Revisa cuanto se va tardar en cada estado.
     private float activeCounter, fadeCounter, inactiveCounter;
     public Transform[] spawnPoints; //Arreglo de los puntos Tranform creados.
@@ -18,12 +23,20 @@ public class BossBattle01 : MonoBehaviour
     public float moveSpeed;         //Velocidad que se moverá entre targetPoints.
 
     //Variable del animator.
+    [Header("Animator")]
     public Animator anim;
     private bool isFadingOut;
     public bool isDamaged;
+    public bool isAttacking;
 
-    public Transform boss;
-    private bool battleEnded;
+    //Shots variables
+    [Header("Shot variables")]
+    public float timeBetweenShots1, timeBetweenShots2; //Para la primera y tercer fase respectivamente.
+    private float shotCounter;
+    public GameObject bullet;
+    public Transform shotPoint;
+    private bool resetShotCounter;
+    //EnemyWeapon enemyWeapon;
 
 
     // Start is called before the first frame update
@@ -31,6 +44,7 @@ public class BossBattle01 : MonoBehaviour
     {
         bossCam = FindObjectOfType<CameraController>();
         player = FindObjectOfType<PlayerMovement>();
+        //enemyWeapon = GetComponent<EnemyWeapon>();
         bossCam.BossBattleCameraStatus(true);
         activeCounter = activeTime;
     }
@@ -77,6 +91,11 @@ public class BossBattle01 : MonoBehaviour
             anim.SetTrigger("isDamaged");
             isDamaged = false;
         }
+        if (isAttacking)
+        {
+            anim.SetTrigger("isAttacking");
+            isAttacking = false;
+        }
     }
 
     private void Flip()
@@ -92,13 +111,13 @@ public class BossBattle01 : MonoBehaviour
     private void BossPhaseController()
     {
         //PHASE 1
-        if (BossHealthSlider.instance.killObject.CurrentHealth() > threshold1) // Si el jefe se encuentra en Fase 1.
+        if (BossHealthSlider.instance.bossHealth.CurrentHealth() > threshold1) // Si el jefe se encuentra en Fase 1.
         {
-            //BossHealthController.instance.isDamageable = false; // El Boss no podrá ser dañado por default.
+            BossHealthSlider.instance.isDamageable = false; // El Boss no podrá ser dañado por default.
 
             if (activeCounter > 0) // Entra si el Boss se encuentra Activo.
             {
-                //BossHealthController.instance.isDamageable = true;  //Solamente podrá ser dañado cuando el "activeCounter" esta andando. Esto es porque esta en estado no desaparecido.
+                BossHealthSlider.instance.isDamageable = true;  //Solamente podrá ser dañado cuando el "activeCounter" esta andando. Esto es porque esta en estado no desaparecido.
 
                 activeCounter -= Time.deltaTime;
                 if (activeCounter <= 0) // Si ya no esta Activo el Boss. Entrará a fase de FadeOut.
@@ -107,7 +126,9 @@ public class BossBattle01 : MonoBehaviour
                     isFadingOut = true;
                 }
 
-                //BossBulletController(); // Revisamos si puede disparar.
+                BossBulletController(); // Revisamos si puede disparar.
+
+                //isAttacking = true;
             }
             else if (fadeCounter > 0) // Entra si el Bos esta en su animacion de FadeOut
             {
@@ -127,7 +148,7 @@ public class BossBattle01 : MonoBehaviour
                     boss.gameObject.SetActive(true);
 
                     activeCounter = activeTime;  //Restablecemos el contador del enemigo activo.
-                    //resetShotCounter = true; // Activamos el booleano que resetea el contador de Shots.
+                    resetShotCounter = true; // Activamos el booleano que resetea el contador de Shots.
                 }
             }
         }
@@ -142,11 +163,10 @@ public class BossBattle01 : MonoBehaviour
             }
             else
             {
-                //player.isDamageable = false;
 
                 if (Vector3.Distance(boss.position, targetPoint.position) > 0.2f) // Si Boss esta alejado de la posición objetivo, lo hacemos mover hacia allá.
                 {
-                    //BossHealthController.instance.isDamageable = true;
+                    BossHealthSlider.instance.isDamageable = true;
                     if (!isDamaged)
                         boss.position = Vector3.MoveTowards(boss.position, targetPoint.position, moveSpeed * Time.deltaTime); //Movemos al Boss.
 
@@ -156,7 +176,10 @@ public class BossBattle01 : MonoBehaviour
                         isFadingOut = true;
                     }
 
-                    //BossBulletController();// Revisamos si podemos disparar. PHASE 2 & PHASE 3
+                    BossBulletController();// Revisamos si podemos disparar. PHASE 2 & PHASE 3
+                    //enemyWeapon.Shoot();
+
+                    //isAttacking = true;
                 }
                 else if (fadeCounter > 0)
                 {
@@ -180,10 +203,35 @@ public class BossBattle01 : MonoBehaviour
                         }
                         boss.gameObject.SetActive(true);
 
-                        //resetShotCounter = true; // Activamos el booleano que resetea el contador de Shots.
+                        resetShotCounter = true; // Activamos el booleano que resetea el contador de Shots.
                     }
                 }
             }
+        }
+    }
+    private void BossBulletController()
+    {
+        if (!resetShotCounter)
+        {
+            shotCounter -= Time.deltaTime;
+            if (shotCounter <= 0) // Si terminó el contador, ya puede disparar un nuevo Shot.
+            {
+                if (BossHealthSlider.instance.bossHealth.CurrentHealth() > threshold2) // Si esta en la PHASE 1 o PHASE 2, dispara a velocidad normal.
+                {
+                    shotCounter = timeBetweenShots1;
+                }
+                else //Si entra a PHASE 3, dispara el doble de rápido.
+                {
+                    shotCounter = timeBetweenShots2;
+                }
+                //enemyWeapon.Shoot();
+                Instantiate(bullet, shotPoint.position, Quaternion.identity);
+            }
+        }
+        else // Sirve para resetear el contador de Shots. No hay disparo cuando el Boss esta en estado Invisible o en transición.
+        {
+            shotCounter = timeBetweenShots1;
+            resetShotCounter = false;
         }
     }
 

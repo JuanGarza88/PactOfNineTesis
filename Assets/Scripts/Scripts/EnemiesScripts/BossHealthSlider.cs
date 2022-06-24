@@ -8,7 +8,8 @@ public class BossHealthSlider : MonoBehaviour
 
     public Slider bossHealthSlider;
 
-    public Killable killObject;
+    public Killable bossHealth;
+    public bool isDamageable;
 
     public BossBattle01 bossBattle;
 
@@ -19,8 +20,9 @@ public class BossHealthSlider : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bossHealthSlider.maxValue = killObject.CurrentHealth();
-        bossHealthSlider.value = killObject.CurrentHealth();
+        isDamageable = true;
+        bossHealthSlider.maxValue = bossHealth.CurrentHealth();
+        bossHealthSlider.value = bossHealth.CurrentHealth();
     }
 
     public void UpdateHealthSlider(int healthPoints)
