@@ -128,6 +128,9 @@ public class DataManager : MonoBehaviour
 
         
 
+
+
+
         playerData.UpdateStats();
 
         initialized = true;

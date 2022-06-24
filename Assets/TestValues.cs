@@ -8,6 +8,9 @@ public class TestValues : MonoBehaviour
     public int healthPoints;
     public int ammo;
 
+    //Puse extra Jump\\
+    //public bool extraJump;
+
 
     public bool[] healthUpgrades;
     public bool[] ammoUpgrades;

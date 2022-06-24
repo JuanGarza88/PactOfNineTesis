@@ -39,9 +39,6 @@ EditorBuildSettings:
     path: Assets/Scenes/NormalStage/NS-006.unity
     guid: d00cd78d8157da245881d446818146ec
   - enabled: 1
-    path: Assets/Scenes/NormalStage/NS-011.unity
-    guid: 565f90dc676a49e4893af993446a6229
-  - enabled: 1
     path: Assets/Scenes/NormalStage/NS-007.unity
     guid: 1ce7d823904354f4e83ce1b60354672e
   - enabled: 1
@@ -53,6 +50,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NormalStage/NS-010.unity
     guid: 44af377acbaea224782f591d8d05c39d
+  - enabled: 1
+    path: Assets/Scenes/NormalStage/NS-011.unity
+    guid: 565f90dc676a49e4893af993446a6229
+  - enabled: 1
+    path: Assets/Scenes/NormalStage/NS-012.unity
+    guid: a2cdc2b9cc1379e4894406a4215f77ae
+  - enabled: 1
+    path: Assets/Scenes/NormalStage/NS-013.unity
+    guid: 4f4ed39109c32bf4b8cd8d8424a391bf
+  - enabled: 1
+    path: Assets/Scenes/NormalStage/NS-014.unity
+    guid: 8515decac8fda3047b15214e14bb025a
+  - enabled: 1
+    path: Assets/Scenes/NormalStage/NS-015.unity
+    guid: f56d363e9fa25ad4f8f83405910c9436
   - enabled: 1
     path: Assets/Scenes/Stage 01.unity
     guid: 4f741b1d9e84bd74197b8a3fcfd40715
