@@ -199,7 +199,16 @@ public class PlayerMovement : MonoBehaviour
         {
 
             isDashing = true;
-            myAnimator.SetBool("Dashing", true);
+            if (myAnimator.GetBool("Jumping"))
+            {
+                myAnimator.SetBool("AirDashing", true);
+
+            }
+            else
+            {
+                myAnimator.SetBool("Dashing", true);
+
+            }
             float dashVelocity = direction.Equals(Direction.Right) ? dashSpeed : -dashSpeed;
             rb.velocity = new Vector2(dashVelocity, 0f);
             rb.gravityScale = 0f;
@@ -208,19 +217,12 @@ public class PlayerMovement : MonoBehaviour
             StartCoroutine(DashCorroutine());
             afterImageCounter = timeBetweenAfterImage;
 
-
             //Reset Jump
             canGetImpulse = false;
             jumpTimeCounter = jumpEnd;
             myAnimator.SetBool("Jumping", false);
 
-
-
-
         }
-
-
-
     }
 
     public void ShowAfterImage()
@@ -238,7 +240,8 @@ public class PlayerMovement : MonoBehaviour
     private IEnumerator DashCorroutine()
     {
         yield return new WaitForSeconds(dashDuration);
-        myAnimator.SetBool("Dashing", false); 
+        myAnimator.SetBool("Dashing", false);
+        myAnimator.SetBool("AirDashing", false);
         isDashing = false;
 
         rb.gravityScale = gravityScale;
