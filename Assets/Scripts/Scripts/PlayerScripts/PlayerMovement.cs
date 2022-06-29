@@ -91,7 +91,7 @@ public class PlayerMovement : MonoBehaviour
 
     private float jumpTimeCounter; //Indica cuanto tiempo llevamos presionando el boton.
     private int jumpCounter; //Cuantos saltos hemos dado.
-    private bool canGetImpulse;
+    public bool canGetImpulse;
 
     private bool isJumpingDown;
 
@@ -202,12 +202,10 @@ public class PlayerMovement : MonoBehaviour
             if (myAnimator.GetBool("Jumping"))
             {
                 myAnimator.SetBool("AirDashing", true);
-
             }
             else
             {
                 myAnimator.SetBool("Dashing", true);
-
             }
             float dashVelocity = direction.Equals(Direction.Right) ? dashSpeed : -dashSpeed;
             rb.velocity = new Vector2(dashVelocity, 0f);
@@ -504,15 +502,20 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
-
+    
     private void ShowJump()
     {
-        if (myAnimator.GetBool("Jumping") && !myAnimator.GetBool("Attacking"))
+        if (myAnimator.GetBool("Jumping") && !myAnimator.GetBool("Attacking") && !myAnimator.GetBool("AirDashing"))
         {
-            if (Mathf.Abs(rb.velocity.y) > 8 || canGetImpulse)
+            //if (Mathf.Abs(rb.velocity.y) > 8 || canGetImpulse)
+            if (rb.velocity.y > 8 || canGetImpulse) //PROBANDO: Se comentó el absoluto para mostrar el frame de cayendo después de un Air Dash.
+            {
                 myAnimator.Play("Jump", 0, 0f);
+            }
             else
-                myAnimator.Play("Jump" , 0, 0.5f);
+            {
+                myAnimator.Play("Jump", 0, 0.75f);
+            }
         }
     }
 
