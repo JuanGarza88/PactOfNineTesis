@@ -13,11 +13,10 @@ public class UIController : MonoBehaviour
     public float fadeSpeed = 1f;
     private bool fadingToBlack, fadingFromBlack;
 
-    public Slider healthSlider;
-
     public string mainMenuScene;
 
     public GameObject pauseScreen;
+    public bool isPaused;
 
 
     private void Awake()
@@ -32,11 +31,9 @@ public class UIController : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-    public void UpdateHealth(int currentHealth, int maxHealth)
+    private void Start()
     {
-        healthSlider.maxValue = maxHealth;
-        healthSlider.value = currentHealth;
+        isPaused = false;
     }
 
     // Update is called once per frame
@@ -48,7 +45,6 @@ public class UIController : MonoBehaviour
         {
             PauseUnpause();
         }
-        
     }
 
     private void FadingController()
@@ -96,12 +92,12 @@ public class UIController : MonoBehaviour
         if(!pauseScreen.activeSelf)
         {
             pauseScreen.SetActive(true);
-            Time.timeScale = 0f;
+            isPaused = true;
         }
         else
         {
             pauseScreen.SetActive(false);
-            Time.timeScale = 1f;
+            isPaused = false;
         }
     }
 

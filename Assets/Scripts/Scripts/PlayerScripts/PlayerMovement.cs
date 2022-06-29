@@ -112,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
         myAnimator = GetComponent<Animator>();
         blinker = GetComponent<Blinker>();
         playerData = FindObjectOfType<PlayerData>(); //Esta en el GameManager para que no se elimine y se peda pasar de stage.
-        canMove = true && Time.timeScale != 0; //Siempre te puedes mover
+        canMove = true; //&& Time.timeScale != 0; //Siempre te puedes mover
 
         UpdateAnimations();
 

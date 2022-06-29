@@ -48,7 +48,30 @@ public class GameManager : MonoBehaviour
     
     void Update()
     {
-        Time.timeScale = gameSpeed;
+        TimeController();
+    }
+
+    // Funcion que controla la velocidad del juego.
+    // Se agregó para detectar si el usuario activó la pausa:
+    //      Si esta en Pausa, velocidad del juego = 0f.
+    //      Si se quitó la pausa, se devuelve el valor default.
+    private void TimeController()
+    {
+        if (UIController.instance != null)
+        {
+            if (UIController.instance.isPaused)
+            {
+                Time.timeScale = 0f;
+            }
+            else
+            {
+                Time.timeScale = gameSpeed;
+            }
+        }
+        else
+        {
+            Time.timeScale = gameSpeed;
+        }
     }
 
     public void SetNextStage(int nextEnterPoint, PlayerMovement.Direction nextPlayerDirection)
