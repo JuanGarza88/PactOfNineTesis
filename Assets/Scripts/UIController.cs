@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIController : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class UIController : MonoBehaviour
     private bool fadingToBlack, fadingFromBlack;
 
     public Slider healthSlider;
+
+    public string mainMenuScene;
+
+    public GameObject pauseScreen;
+
 
     private void Awake()
     {
@@ -37,6 +43,12 @@ public class UIController : MonoBehaviour
     void Update()
     {
         FadingController(); // Controla el fadingtoblack o fadingFromBlack.
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseUnpause();
+        }
+        
     }
 
     private void FadingController()
@@ -78,4 +90,27 @@ public class UIController : MonoBehaviour
         fadingToBlack = false;
 
     }
+
+    public void PauseUnpause()
+    {
+        if(!pauseScreen.activeSelf)
+        {
+            pauseScreen.SetActive(true);
+            Time.timeScale = 0f;
+        }
+        else
+        {
+            pauseScreen.SetActive(false);
+            Time.timeScale = 1f;
+        }
+    }
+
+    public void GoToMainMenu() // se crea una funcion y se le da la referencia de la escena del menu principal
+    {
+        Time.timeScale = 1f;
+        instance = null;
+        Destroy(gameObject);
+        SceneManager.LoadScene(mainMenuScene);
+    }
+
 }
