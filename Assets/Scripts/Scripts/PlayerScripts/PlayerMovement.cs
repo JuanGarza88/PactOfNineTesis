@@ -196,7 +196,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.V) && dashCounter < dashAllow && playerData.powerUpDash == true)
         {
-
+            SFXManager.Instance.PlaySFX(SFXManager.SFXName.Dash);
             isDashing = true;
             if (myAnimator.GetBool("Jumping"))
             {

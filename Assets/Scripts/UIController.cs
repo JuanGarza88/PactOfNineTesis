@@ -89,15 +89,18 @@ public class UIController : MonoBehaviour
 
     public void PauseUnpause()
     {
+
         if(!pauseScreen.activeSelf)
         {
             pauseScreen.SetActive(true);
             isPaused = true;
+            MusicPlayer.Instance.ChangeVolume(true);
         }
         else
         {
             pauseScreen.SetActive(false);
             isPaused = false;
+            MusicPlayer.Instance.ChangeVolume(false);
         }
     }
 
@@ -108,5 +111,11 @@ public class UIController : MonoBehaviour
         Destroy(gameObject);
         SceneManager.LoadScene(mainMenuScene);
     }
+
+    public void PlaySFX()
+    {
+        SFXManager.Instance.PlaySFX(SFXManager.SFXName.MenuSelect);
+    }
+
 
 }

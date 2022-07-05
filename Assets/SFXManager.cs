@@ -29,7 +29,9 @@ public class SFXManager : MonoBehaviour
         splash,
         sword1,
         sword2,
-        sword3;
+        sword3,
+        dash,
+        menuSelect;
     //
     //[SerializeField] AudioClip 
     //[SerializeField] AudioClip 
@@ -91,6 +93,8 @@ public class SFXManager : MonoBehaviour
             case SFXName.Sword1: clip = sword1; break;
             case SFXName.Sword2: clip = sword2; break;
             case SFXName.Sword3: clip = sword3; break;
+            case SFXName.Dash: clip = dash; break;
+            case SFXName.MenuSelect: clip = menuSelect; break;
             default: clip = beep1; break;
         }
         volume = Mathf.Clamp(volume, 0, 2);
@@ -124,5 +128,7 @@ public class SFXManager : MonoBehaviour
         Sword1,
         Sword2,
         Sword3,
+        Dash,
+        MenuSelect,
     }
 }

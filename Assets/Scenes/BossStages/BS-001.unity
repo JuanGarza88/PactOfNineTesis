@@ -6062,6 +6062,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6191702174023222484, guid: 0055205401654c14f96702cae289f65d, type: 3}
+      propertyPath: dash
+      value: 
+      objectReference: {fileID: 8300000, guid: 3b2785b7161fbfd499c2402039207e04, type: 3}
+    - target: {fileID: 6191702174023222484, guid: 0055205401654c14f96702cae289f65d, type: 3}
+      propertyPath: menuSelect
+      value: 
+      objectReference: {fileID: 8300000, guid: 0c2852de4746f4a43b493ef6d8c02714, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0055205401654c14f96702cae289f65d, type: 3}
 --- !u!1 &1942230806

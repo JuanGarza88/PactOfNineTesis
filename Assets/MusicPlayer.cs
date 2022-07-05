@@ -106,4 +106,20 @@ public class MusicPlayer : MonoBehaviour
         Item,
         Dead
     }
+
+    //Se agrega para bajar el volumen en menú de pausa.
+    public void ChangeVolume(bool isPaused)
+    {
+        if (isPaused)
+        {
+            audioSource.volume = volumeMultiplier / 4;
+            audioSource.pitch = .99f;
+        }
+        else
+        {
+            audioSource.volume = volumeMultiplier;
+            audioSource.pitch = 1f;
+        }
+    }
+
 }
