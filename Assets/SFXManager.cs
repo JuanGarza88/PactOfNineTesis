@@ -6,7 +6,8 @@ public class SFXManager : MonoBehaviour
 {
     [Header("Clips")]
     [SerializeField] AudioClip ammo;
-    [SerializeField] AudioClip axe,
+    [SerializeField]
+    AudioClip axe,
         beep1,
         beep2,
         beep3,
@@ -32,6 +33,8 @@ public class SFXManager : MonoBehaviour
         sword3,
         dash,
         menuSelect;
+       
+   
     //
     //[SerializeField] AudioClip 
     //[SerializeField] AudioClip 
@@ -96,6 +99,7 @@ public class SFXManager : MonoBehaviour
             case SFXName.Dash: clip = dash; break;
             case SFXName.MenuSelect: clip = menuSelect; break;
             default: clip = beep1; break;
+     
         }
         volume = Mathf.Clamp(volume, 0, 2);
         AudioSource.PlayClipAtPoint(clip, Camera.main.transform.position, volume);
@@ -130,5 +134,6 @@ public class SFXManager : MonoBehaviour
         Sword3,
         Dash,
         MenuSelect,
+        
     }
 }

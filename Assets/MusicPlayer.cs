@@ -17,6 +17,9 @@ public class MusicPlayer : MonoBehaviour
     [SerializeField] AudioClip themeBoss;
     [SerializeField] AudioClip themeItem;
     [SerializeField] AudioClip themeDead;
+    [SerializeField] AudioClip AmbienceMusic01;
+    [SerializeField] AudioClip AmbienceMusic02;
+    [SerializeField] AudioClip AmbienceMusic03;
 
     static MusicPlayer instance;
 
@@ -83,6 +86,9 @@ public class MusicPlayer : MonoBehaviour
             case ThemeName.Boss: audioSource.clip = themeBoss; break;
             case ThemeName.Item: audioSource.clip = themeItem; break;
             case ThemeName.Dead: audioSource.clip = themeDead; break;
+            case ThemeName.AmbienceMusic01: audioSource.clip = AmbienceMusic01; break;
+            case ThemeName.AmbienceMusic02: audioSource.clip = AmbienceMusic02; break;
+            case ThemeName.AmbienceMusic03: audioSource.clip = AmbienceMusic03; break;
         }
         audioSource.Play();
         audioSource.volume = volumeMultiplier;
@@ -104,7 +110,10 @@ public class MusicPlayer : MonoBehaviour
         Hell,
         Boss,
         Item,
-        Dead
+        Dead,
+        AmbienceMusic01,
+        AmbienceMusic02,
+        AmbienceMusic03
     }
 
     //Se agrega para bajar el volumen en menú de pausa.
