@@ -23,8 +23,10 @@ public class Bullet : MonoBehaviour
         moveDirection = (target.position - transform.position).normalized; //Se obtiene el la posicion del jugador y se calcula su vector para diparar hacia el
         rb.velocity = new Vector2(moveDirection.x, moveDirection.y) * speed;
         DestroyBullet(3f);
+        SFXManager.Instance.PlaySFX(SFXManager.SFXName.EnemyShot2);
+
     }
-    
+
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
         if(player != null)

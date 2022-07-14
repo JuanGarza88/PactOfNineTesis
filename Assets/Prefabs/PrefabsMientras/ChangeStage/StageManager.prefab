@@ -49,6 +49,9 @@ MonoBehaviour:
   enterPonts:
   - {fileID: 0}
   theme: 6
+  bgMusic: 1
+  leftBoundary: 0
+  rightBoundary: 0
 --- !u!114 &885728199567123835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,9 +64,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63620d5c5f70ca34fa7aafd40bc8e883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  screenSize: {x: 15, y: 10}
-  cameraOffset: 1.5
-  leftBoundary: 0
-  rightBoundary: 0
-  downBoundary: 0
-  upBoundary: 0
+  isBossCamActive: 0

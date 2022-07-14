@@ -55,6 +55,9 @@ MonoBehaviour:
   themeBoss: {fileID: 8300000, guid: fce9bf15317aa4f48960ed9e375e18a2, type: 3}
   themeItem: {fileID: 8300000, guid: 50261f3802a756d46b3496aba7d1970b, type: 3}
   themeDead: {fileID: 8300000, guid: 55ec88dad628cb347a6582ee31dd0b91, type: 3}
+  AmbienceMusic01: {fileID: 8300000, guid: 635d4cefaa984924db88c732cfb9a6f7, type: 3}
+  AmbienceMusic02: {fileID: 8300000, guid: 8755cd02b2026a844b2ad220359f2fd5, type: 3}
+  AmbienceMusic03: {fileID: 8300000, guid: dce16b53b2657f142b4ec020e855f960, type: 3}
 --- !u!82 &7376408161746369945
 AudioSource:
   m_ObjectHideFlags: 0

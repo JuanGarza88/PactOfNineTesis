@@ -96,7 +96,6 @@ public class MusicPlayer : MonoBehaviour
 
     void Update()
     {
-        
     }
 
     public enum ThemeName
@@ -130,5 +129,4 @@ public class MusicPlayer : MonoBehaviour
             audioSource.pitch = 1f;
         }
     }
-
 }

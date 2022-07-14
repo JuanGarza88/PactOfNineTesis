@@ -8,6 +8,7 @@ public class StageManager : MonoBehaviour
     [SerializeField] public Vector2 size;
     [SerializeField] Transform[] enterPonts;
     [SerializeField] MusicPlayer.ThemeName theme;
+    [SerializeField] BGMusicPlayer.ThemeName bgMusic;
 
     GameManager gameManager;
 
@@ -30,6 +31,7 @@ public class StageManager : MonoBehaviour
         FindObjectOfType<CameraController>().Initialize();
 
         MusicPlayer.Instance.PlayTheme(theme);
+        BGMusicPlayer.Instance.PlayTheme(bgMusic);
 
         InitializeStage();
     }

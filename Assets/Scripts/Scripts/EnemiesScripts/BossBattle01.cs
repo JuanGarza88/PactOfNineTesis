@@ -75,6 +75,7 @@ public class BossBattle01 : MonoBehaviour
 
     public void EndBattle()
     {
+        SFXManager.Instance.PlaySFX(SFXManager.SFXName.EnemyDead3); //por ahora este sonido.
         bossCam.BossBattleCameraStatus(false);
         gameObject.SetActive(false);
     }
@@ -88,6 +89,7 @@ public class BossBattle01 : MonoBehaviour
         }
         if (isDamaged)
         {
+            SFXManager.Instance.PlaySFX(SFXManager.SFXName.EnemyHit); 
             anim.SetTrigger("isDamaged");
             isDamaged = false;
         }
@@ -130,13 +132,15 @@ public class BossBattle01 : MonoBehaviour
 
                 //isAttacking = true;
             }
-            else if (fadeCounter > 0) // Entra si el Bos esta en su animacion de FadeOut
+            else if (fadeCounter > 0) // Entra si el Boss esta en su animacion de FadeOut
             {
                 fadeCounter -= Time.deltaTime;
                 if (fadeCounter <= 0)// Entra si el Boss ya termino su animación de FadeOut. Ahora es invisible.
                 {
                     boss.gameObject.SetActive(false);
                     inactiveCounter = inactiveTime;
+                    SFXManager.Instance.PlaySFX(SFXManager.SFXName.EnemyDead2); //Sonido de desaparecer.
+
                 }
             }
             else if (inactiveCounter > 0) // Entra si el Boss es invisible.
@@ -146,6 +150,7 @@ public class BossBattle01 : MonoBehaviour
                 {
                     boss.position = spawnPoints[Random.Range(0, spawnPoints.Length)].position;
                     boss.gameObject.SetActive(true);
+                    SFXManager.Instance.PlaySFX(SFXManager.SFXName.EnemyDead2); //Sonido de desaparecer.
 
                     activeCounter = activeTime;  //Restablecemos el contador del enemigo activo.
                     resetShotCounter = true; // Activamos el booleano que resetea el contador de Shots.
