@@ -66,27 +66,36 @@ EditorBuildSettings:
     path: Assets/Scenes/NormalStage/NS-015.unity
     guid: f56d363e9fa25ad4f8f83405910c9436
   - enabled: 1
+    path: Assets/Scenes/FireStage/FS-001.unity
+    guid: bd434e3e6af40dd46998bba6dc8ad2e7
+  - enabled: 1
+    path: Assets/Scenes/FireStage/FS-002.unity
+    guid: 10fdb724f419e6f4c81598fddc8becc6
+  - enabled: 1
+    path: Assets/Scenes/FireStage/FS-003.unity
+    guid: a8b18a6ca1ddfe44da8d45e027cfe63f
+  - enabled: 0
     path: Assets/Scenes/Stage 01.unity
     guid: 4f741b1d9e84bd74197b8a3fcfd40715
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage 02.unity
     guid: 1206f0208319dda45addfd445be4fb90
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage 03.unity
     guid: 362621ee8d407e9469fec73f1979c92a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage 04.unity
     guid: 62926d2a3315ace439314b1aaf171b3c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage 01x.unity
     guid: 1d7f02930ceda974cbbbdb9e8e7bc283
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage 02x.unity
     guid: 48d675013086714498390b4e8c13a8b7
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage 03x.unity
     guid: bbdcbd048a5b3df4b8a93ecbba0097bb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Stage 04x.unity
     guid: 3d410d7555b3e244a9737d5de4de2e12
   m_configObjects: {}

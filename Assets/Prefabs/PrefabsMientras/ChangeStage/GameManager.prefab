@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSpeed: 1
-  useTestValues: 1
+  useTestValues: 0
   stageObjectsVisible: 0
   ladderVisible: 0
   savingDisabled: 0
@@ -108,7 +108,7 @@ MonoBehaviour:
   healthPoints: 5
   ammo: 25
   healthUpgrades: 000000000000000000000000
-  ammoUpgrades: 
+  ammoUpgrades: 0000000000000000000000
   weaponMeleeUpgrades: 010000
   weaponRangeUpgrades: 000000
   keys: 0000000000

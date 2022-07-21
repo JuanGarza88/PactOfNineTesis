@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -54,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpImpulse;
     [SerializeField] float jumpEnd;
     [SerializeField] float fallSpeedMax;
-    [SerializeField] public int jumpsAllowed = 1; //Para saber cuantos saltos tenemos.
+    [SerializeField] int jumpsAllowed = 1; //Para saber cuantos saltos tenemos.
     [SerializeField] float gravityScale; //La gravedad que deshabilitaremos y habilitaremos en varios momentos.
 
     [Header("Attack")]
@@ -68,8 +69,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float invincibilityTime; //Tiempo que dura el periodo de inbunerabilidad.
 
     public int JumpAllowed => jumpsAllowed + (playerData.extraJump ? 1 : 0);
-   
 
+    public event Action<int> OnPowerSwitched;
 
 
 
@@ -471,8 +472,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (isJumpingDown)
             return;
-
-        if (Input.GetButtonDown("Jump") && jumpCounter < jumpsAllowed) //El contador sea menor a los saltos permitidos.
+        
+        if (Input.GetButtonDown("Jump") && jumpCounter < JumpAllowed) //El contador sea menor a los saltos permitidos.
         {
             jumpCounter++; //es lo mismo poner ++ y = jumpCounter + 1;
             canGetImpulse = true;
@@ -726,9 +727,9 @@ public class PlayerMovement : MonoBehaviour
                     playerData.switchPower = 0;
                         break;
                 }
-                // playerData.switchPower = true;
-            
+            // playerData.switchPower = true;
 
+            OnPowerSwitched?.Invoke(playerData.switchPower); 
 
         }
         

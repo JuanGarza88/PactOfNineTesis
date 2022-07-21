@@ -9845,10 +9845,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3967064257623010133, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
-      propertyPath: ammoUpgrades.Array.size
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 3967064257623010133, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
       propertyPath: healthUpgrades.Array.size
       value: 11
       objectReference: {fileID: 0}

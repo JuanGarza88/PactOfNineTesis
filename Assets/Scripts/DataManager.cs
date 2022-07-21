@@ -148,7 +148,7 @@ public class DataManager : MonoBehaviour
         ///////////////falta poner powerups de dash,doubleJump,fire,water.\\\\\\\\\\\\Preguntar a LordMarco.
         ///// ahora tiene que estar "5|0|0|00000000000|00000000000|000|000|00000"
         /////current health | current ammo | checkpoint | extra health/Hearts | extra ammo | melee | range | keys | Fire | Water | Dash | ExtJump\\ New 
-        /////////0|||||||||||||||1||||||||||||2|||||||||||||||||3||||||||||||||||4||||||||||5|||||||6|||||||7||||8|||||||9|||||10|||||11|||
+        /////////0||||||||||||||||1||||||||||||||2|||||||||||||||||3||||||||||||||||4||||||||||5|||||||6|||||||7|||||8|||||||9|||||||10||||||11|||
         ///"5|0|0|00000000000|00000000000|000|000|00000|0|0|0|0"\\\
 
         saveString += playerData.healthPoints + "|"; //0 new
