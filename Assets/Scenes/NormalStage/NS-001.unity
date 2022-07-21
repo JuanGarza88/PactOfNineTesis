@@ -5995,15 +5995,9 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 885728199567123834, guid: d431e0ff7393a514a8062db9a2e53f6a, type: 3}
-<<<<<<< Updated upstream
       propertyPath: bgMusic
       value: 1
       objectReference: {fileID: 0}
-=======
-      propertyPath: playerPrefab
-      value: 
-      objectReference: {fileID: 8137719611329882288, guid: a7aaf76219d20154baf79009c7bf81dc, type: 3}
->>>>>>> Stashed changes
     - target: {fileID: 885728199567123834, guid: d431e0ff7393a514a8062db9a2e53f6a, type: 3}
       propertyPath: enterPonts.Array.size
       value: 3
@@ -11825,15 +11819,7 @@ PrefabInstance:
     - target: {fileID: 6191702174023222484, guid: 0055205401654c14f96702cae289f65d, type: 3}
       propertyPath: dash
       value: 
-<<<<<<< Updated upstream
       objectReference: {fileID: 8300000, guid: b0c625b1f3f670f4d813c0b87f70fda9, type: 3}
-=======
-      objectReference: {fileID: 8300000, guid: 3b2785b7161fbfd499c2402039207e04, type: 3}
-    - target: {fileID: 6191702174023222484, guid: 0055205401654c14f96702cae289f65d, type: 3}
-      propertyPath: menuSelect
-      value: 
-      objectReference: {fileID: 8300000, guid: 0c2852de4746f4a43b493ef6d8c02714, type: 3}
->>>>>>> Stashed changes
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0055205401654c14f96702cae289f65d, type: 3}
 --- !u!1 &1942230806
@@ -12200,11 +12186,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3967064257623010133, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
       propertyPath: weaponMeleeUpgrades.Array.data[0]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3967064257623010133, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
-      propertyPath: weaponRangeUpgrades.Array.data[0]
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4704122042652152865, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
       propertyPath: m_Name
@@ -12212,7 +12194,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4704122042652152870, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
       propertyPath: invincibility
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4704122042652152871, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
       propertyPath: m_RootOrder
