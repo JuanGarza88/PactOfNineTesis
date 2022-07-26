@@ -18,6 +18,9 @@ public class UIController : MonoBehaviour
     public GameObject pauseScreen;
     public bool isPaused;
 
+    public GameObject gameOverScreen;
+    public bool isGameOver;
+
 
     private void Awake()
     {
@@ -34,6 +37,7 @@ public class UIController : MonoBehaviour
     private void Start()
     {
         isPaused = false;
+        isGameOver = false;
     }
 
     // Update is called once per frame
@@ -44,6 +48,10 @@ public class UIController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             PauseUnpause();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha0)) //Solamente de Testing. QUITAR CUANDO YA NO SE USE DE TESTING.
+        {
+            GameEnd();
         }
     }
 
@@ -89,27 +97,77 @@ public class UIController : MonoBehaviour
 
     public void PauseUnpause()
     {
-
-        if(!pauseScreen.activeSelf)
+        if (!gameOverScreen.activeSelf) // Solo se activa la Pausa cuando no esta en GameOver.
         {
-            pauseScreen.SetActive(true);
-            isPaused = true;
+            if (!pauseScreen.activeSelf)
+            {
+                pauseScreen.SetActive(true);
+                isPaused = true;
+                PlayerMovement.instance.canMove = false;
+                MusicPlayer.Instance.ChangeVolume(true);
+            }
+            else
+            {
+                pauseScreen.SetActive(false);
+                isPaused = false;
+                PlayerMovement.instance.canMove = true;
+                MusicPlayer.Instance.ChangeVolume(false);
+            }
+        }
+
+
+    }
+    public void GameEnd()
+    {
+        if (!gameOverScreen.activeSelf)
+        {
+            gameOverScreen.SetActive(true);
+            isGameOver = true;
+            //PlayerMovement.instance.canMove = false;
             MusicPlayer.Instance.ChangeVolume(true);
         }
         else
         {
-            pauseScreen.SetActive(false);
-            isPaused = false;
+            gameOverScreen.SetActive(false);
+            isGameOver = false;
+            PlayerMovement.instance.canMove = true;
             MusicPlayer.Instance.ChangeVolume(false);
         }
     }
 
+
     public void GoToMainMenu() // se crea una funcion y se le da la referencia de la escena del menu principal
     {
+        if (gameOverScreen.activeSelf)
+        {
+            gameOverScreen.SetActive(false);
+            isGameOver = false;
+            PlayerMovement.instance.canMove = true;
+            MusicPlayer.Instance.ChangeVolume(false);
+        }
         Time.timeScale = 1f;
         instance = null;
         Destroy(gameObject);
         SceneManager.LoadScene(mainMenuScene);
+    }
+
+    public void ReturnToGame() // Funcion para regresar al ultimo punto donde murio el Player.
+    {
+        if (gameOverScreen.activeSelf)
+        {
+            gameOverScreen.SetActive(false);
+            isGameOver = false;
+            PlayerMovement.instance.canMove = true;
+            MusicPlayer.Instance.ChangeVolume(false);
+        }
+        FindObjectOfType<DataManager>().LoadData();
+        Debug.Log("Return to game.");
+    }
+
+    public void ExitGame() // Cerrar el juego.
+    {
+        Application.Quit();
+        Debug.Log("Quit game.");
     }
 
     public void PlaySFX()

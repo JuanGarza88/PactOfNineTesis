@@ -52,14 +52,14 @@ public class GameManager : MonoBehaviour
     }
 
     // Funcion que controla la velocidad del juego.
-    // Se agregó para detectar si el usuario activó la pausa:
-    //      Si esta en Pausa, velocidad del juego = 0f.
-    //      Si se quitó la pausa, se devuelve el valor default.
+    // Se agregó para detectar si el usuario activó la pausa, o hay game over:
+    //      Si esta en Pausa/GameOver, velocidad del juego = 0f.
+    //      Si se quitó la pausa/GameOver, se devuelve el valor default.
     private void TimeController()
     {
         if (UIController.instance != null)
         {
-            if (UIController.instance.isPaused)
+            if (UIController.instance.isPaused || UIController.instance.isGameOver)
             {
                 Time.timeScale = 0f;
             }

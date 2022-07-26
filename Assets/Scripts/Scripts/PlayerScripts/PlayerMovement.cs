@@ -67,6 +67,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float damageThrowVertical;
     [SerializeField] float recoverTime; //Tiempo de recuperacion, recuperas control
     [SerializeField] float invincibilityTime; //Tiempo que dura el periodo de inbunerabilidad.
+    [SerializeField] float waitForSeconds; //Guarda el booleano para saber si el Player murio.
+    
+
 
     public int JumpAllowed => jumpsAllowed + (playerData.extraJump ? 1 : 0);
 
@@ -644,7 +647,9 @@ public class PlayerMovement : MonoBehaviour
 
         if(playerData.healthPoints <= 0)
         {
-            FindObjectOfType<DataManager>().LoadData();
+            // Si el Player muere por vida vacia, se activa la pantalla de GameOver.
+            //isPlayerDead = true;
+            StartCoroutine(PlayerDeadCo());
         }
     }
 
@@ -736,6 +741,22 @@ public class PlayerMovement : MonoBehaviour
         //Cuando presiono la tecla A, 
         //Sin haber agarrado ningun power Up no pasa nada.
         //Pero si ya agarre un Item de un ElementalPower puedo cambiar de habilidad.
+
+    }
+
+
+    // Cuando muera el jugador se generará la animación de muerte, se espera unos segundos y aparecerá la pantalla de GameOver al terminar.
+    IEnumerator PlayerDeadCo()
+    {
+        //gameObject.SetActive(false);
+        PlayerMovement.instance.canMove = false;
+        Debug.Log("entre1");
+        //Aqui va la animación de muerte del Player.
+        yield return new WaitForSeconds(waitForSeconds);
+        Debug.Log("entre2");
+
+        UIController.instance.GameEnd();
+
 
     }
 

@@ -1816,6 +1816,18 @@ PrefabInstance:
       propertyPath: bgMusicSource
       value: 
       objectReference: {fileID: 1019726664}
+    - target: {fileID: 7090162923890254972, guid: 846505d640df07c49bf4febb86cec4a6, type: 3}
+      propertyPath: AmbienceMusic01
+      value: 
+      objectReference: {fileID: 8300000, guid: 453fbbbc515bfe94e80b7be3b737a92e, type: 3}
+    - target: {fileID: 7090162923890254972, guid: 846505d640df07c49bf4febb86cec4a6, type: 3}
+      propertyPath: AmbienceMusic02
+      value: 
+      objectReference: {fileID: 8300000, guid: edb55a64a4d62c545bb6da6bfb1d14f4, type: 3}
+    - target: {fileID: 7090162923890254972, guid: 846505d640df07c49bf4febb86cec4a6, type: 3}
+      propertyPath: AmbienceMusic03
+      value: 
+      objectReference: {fileID: 8300000, guid: 810bfceb3dabab04ea8eae77c2d92da6, type: 3}
     - target: {fileID: 7376408161746369926, guid: 846505d640df07c49bf4febb86cec4a6, type: 3}
       propertyPath: m_Name
       value: MusicPlayer
@@ -11820,6 +11832,10 @@ PrefabInstance:
       propertyPath: dash
       value: 
       objectReference: {fileID: 8300000, guid: b0c625b1f3f670f4d813c0b87f70fda9, type: 3}
+    - target: {fileID: 6191702174023222484, guid: 0055205401654c14f96702cae289f65d, type: 3}
+      propertyPath: menuSelect
+      value: 
+      objectReference: {fileID: 8300000, guid: 0c2852de4746f4a43b493ef6d8c02714, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0055205401654c14f96702cae289f65d, type: 3}
 --- !u!1 &1942230806
@@ -12194,7 +12210,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4704122042652152870, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
       propertyPath: invincibility
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4704122042652152871, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
       propertyPath: m_RootOrder

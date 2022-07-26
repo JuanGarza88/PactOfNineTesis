@@ -573,9 +573,11 @@ MonoBehaviour:
   damageThrowVertical: 12
   recoverTime: 0.35
   invincibilityTime: 1.5
+  waitForSeconds: 2
   canMove: 0
   myAnimator: {fileID: 0}
   direction: 0
+  canGetImpulse: 0
   isDashing: 0
 --- !u!114 &1142039104989608851
 MonoBehaviour:
