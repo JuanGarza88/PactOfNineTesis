@@ -15,8 +15,13 @@ public class UIController : MonoBehaviour
 
     public string mainMenuScene;
 
+    [Header("Pause")]
     public GameObject pauseScreen;
     public bool isPaused;
+
+    [Header("Exit Game")]
+    public GameObject gameOverScreen;
+    public bool isGameOver;
 
 
     private void Awake()
@@ -44,6 +49,10 @@ public class UIController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             PauseUnpause();
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha0)) // GAMEOVER TESTING
+        {
+            GameEnd();
         }
     }
 
@@ -90,7 +99,7 @@ public class UIController : MonoBehaviour
     public void PauseUnpause()
     {
 
-        if(!pauseScreen.activeSelf)
+        if (!pauseScreen.activeSelf)
         {
             pauseScreen.SetActive(true);
             isPaused = true;
@@ -104,14 +113,51 @@ public class UIController : MonoBehaviour
         }
     }
 
+    public void GameEnd()
+    {
+
+        if (!gameOverScreen.activeSelf)
+        {
+            gameOverScreen.SetActive(true);
+            isGameOver = true;
+            MusicPlayer.Instance.ChangeVolume(true);
+        }
+        else
+        {
+            gameOverScreen.SetActive(false);
+            isGameOver = false;
+            MusicPlayer.Instance.ChangeVolume(false);
+        }
+    }
+
+    public void GoToLastSavePoint()
+    {
+        gameOverScreen.SetActive(false);
+        isGameOver = false;
+        MusicPlayer.Instance.ChangeVolume(false);
+
+        Time.timeScale = 1f;
+        FindObjectOfType<DataManager>().LoadData();
+
+    }
     public void GoToMainMenu() // se crea una funcion y se le da la referencia de la escena del menu principal
     {
+        gameOverScreen.SetActive(false);
+        isGameOver = false;
+        MusicPlayer.Instance.ChangeVolume(false);
+
         Time.timeScale = 1f;
         instance = null;
         Destroy(gameObject);
         SceneManager.LoadScene(mainMenuScene);
     }
 
+    public void QuitGame()
+    {
+        Debug.Log("Game has been Quit.");
+        Application.Quit();
+
+    }
     public void PlaySFX()
     {
         SFXManager.Instance.PlaySFX(SFXManager.SFXName.MenuSelect);

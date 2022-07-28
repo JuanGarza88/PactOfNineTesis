@@ -68,3 +68,5 @@ MonoBehaviour:
   sword1: {fileID: 8300000, guid: 22a41fbd7fd02f240bc321bb14d71d34, type: 3}
   sword2: {fileID: 8300000, guid: a99df5f9664ad894e87b409dd672164b, type: 3}
   sword3: {fileID: 8300000, guid: 80ab9b1811257754594e9a54197b8e01, type: 3}
+  dash: {fileID: 8300000, guid: b0c625b1f3f670f4d813c0b87f70fda9, type: 3}
+  menuSelect: {fileID: 8300000, guid: 0c2852de4746f4a43b493ef6d8c02714, type: 3}
