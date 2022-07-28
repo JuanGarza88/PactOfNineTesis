@@ -59,7 +59,7 @@ public class GameManager : MonoBehaviour
     {
         if (UIController.instance != null)
         {
-            if (UIController.instance.isPaused  || UIController.instance.isGameOver)
+            if (UIController.instance.isPaused || UIController.instance.isGameOver)
             {
                 Time.timeScale = 0f;
             }

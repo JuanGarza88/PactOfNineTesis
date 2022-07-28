@@ -115,9 +115,7 @@ public class PlayerMovement : MonoBehaviour
         blinker = GetComponent<Blinker>();
         playerData = FindObjectOfType<PlayerData>(); //Esta en el GameManager para que no se elimine y se peda pasar de stage.
         canMove = true; //&& Time.timeScale != 0; //Siempre te puedes mover
-
         UpdateAnimations();
-
         
     }
 
@@ -125,6 +123,7 @@ public class PlayerMovement : MonoBehaviour
     
     void Update() //Checar lo de el movimiento que la aceleracion comience en 1 y -1///
     {
+
         currentAnimation = CurrentAnimation();
         currentAnimation = currentAnimation.Remove(0, characterName.Length + 1);
 
@@ -167,6 +166,7 @@ public class PlayerMovement : MonoBehaviour
         }
 
         activeLadder = null;
+
     }
 
     private bool GroundAttack()

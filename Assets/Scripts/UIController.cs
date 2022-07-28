@@ -98,18 +98,23 @@ public class UIController : MonoBehaviour
 
     public void PauseUnpause()
     {
+        if (!gameOverScreen.activeSelf)
+        {
+            if (!pauseScreen.activeSelf)
+            {
+                pauseScreen.SetActive(true);
+                isPaused = true;
+                PlayerMovement.instance.canMove = false;
+                MusicPlayer.Instance.ChangeVolume(true);
+            }
+            else
+            {
+                pauseScreen.SetActive(false);
+                isPaused = false;
+                PlayerMovement.instance.canMove = true;
 
-        if (!pauseScreen.activeSelf)
-        {
-            pauseScreen.SetActive(true);
-            isPaused = true;
-            MusicPlayer.Instance.ChangeVolume(true);
-        }
-        else
-        {
-            pauseScreen.SetActive(false);
-            isPaused = false;
-            MusicPlayer.Instance.ChangeVolume(false);
+                MusicPlayer.Instance.ChangeVolume(false);
+            }
         }
     }
 
@@ -120,18 +125,24 @@ public class UIController : MonoBehaviour
         {
             gameOverScreen.SetActive(true);
             isGameOver = true;
+            PlayerMovement.instance.canMove = false;
+
             MusicPlayer.Instance.ChangeVolume(true);
         }
         else
         {
             gameOverScreen.SetActive(false);
             isGameOver = false;
+            PlayerMovement.instance.canMove = true;
+
             MusicPlayer.Instance.ChangeVolume(false);
         }
     }
 
     public void GoToLastSavePoint()
     {
+        PlayerMovement.instance.canMove = true;
+
         gameOverScreen.SetActive(false);
         isGameOver = false;
         MusicPlayer.Instance.ChangeVolume(false);
