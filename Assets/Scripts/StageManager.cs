@@ -31,7 +31,6 @@ public class StageManager : MonoBehaviour
         FindObjectOfType<CameraController>().Initialize();
 
         MusicPlayer.Instance.PlayTheme(theme);
-        BGMusicPlayer.Instance.PlayTheme(bgMusic);
 
         InitializeStage();
     }

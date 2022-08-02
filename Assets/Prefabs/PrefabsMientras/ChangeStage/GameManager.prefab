@@ -47,11 +47,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSpeed: 1
-  useTestValues: 0
+  useTestValues: 1
   stageObjectsVisible: 0
   ladderVisible: 0
   savingDisabled: 0
-  invincibility: 0
+  invincibility: 1
   infiniteHealth: 0
   screenSize: {x: 15, y: 10}
   cameraOffset: 1.5

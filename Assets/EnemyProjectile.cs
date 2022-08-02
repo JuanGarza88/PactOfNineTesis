@@ -11,6 +11,8 @@ public class EnemyProjectile : MonoBehaviour
     [Header("Explosion")]
     [SerializeField] GameObject explosionPrefab;
 
+    private int damageAmount;
+
     StageManager stageManager;
     void Start()
     {
@@ -40,9 +42,13 @@ public class EnemyProjectile : MonoBehaviour
     void HitPlayer(Collider2D other)
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player Hitbox"))
-            other.GetComponentInParent<PlayerMovement>().TakeDamage(transform.position.x);
+            other.GetComponentInParent<PlayerMovement>().TakeDamage(transform.position.x, damageAmount);
     }
 
+    public void Initialize(int amount)
+    {
+        damageAmount = amount;
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         HitPlayer(other);

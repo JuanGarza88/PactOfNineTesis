@@ -7,6 +7,7 @@ public class EnemyShooter : MonoBehaviour
     [Header("Attack")]
     [SerializeField] float fireRate;
     [SerializeField] float iniCounter;
+    [SerializeField] public int bulletDamage; 
     [SerializeField] EnemyProjectile projectilePrefab;
     [SerializeField] Transform projectilePoint;
 
@@ -47,5 +48,7 @@ public class EnemyShooter : MonoBehaviour
         var newProjectile = Instantiate(projectilePrefab, projectilePoint.position, Quaternion.identity);
         newProjectile.transform.localScale = new Vector2(transform.localScale.x, 1f);
         newProjectile.transform.SetParent(FindObjectOfType<Instances>().projectiles);
+
+        newProjectile.GetComponent<EnemyProjectile>().Initialize(bulletDamage);
     }
 }

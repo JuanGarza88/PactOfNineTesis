@@ -6,6 +6,8 @@ public class Harmful : MonoBehaviour
 {
     [HideInInspector] public bool active;
 
+    [SerializeField] public int amountHeart;
+
     private void Start()
     {
         active = true;
@@ -16,11 +18,13 @@ public class Harmful : MonoBehaviour
     {
         if (!active)
             return;
-
+        //other es el collider
         if (other.gameObject.layer == LayerMask.NameToLayer("Player Hitbox"))
         {
-            other.gameObject.GetComponentInParent<PlayerMovement>().TakeDamage(transform.position.x);
+            other.gameObject.GetComponentInParent<PlayerMovement>().TakeDamage(transform.position.x,amountHeart);
         }
+
+
     }
 
     private void OnTriggerStay2D(Collider2D other)
@@ -30,7 +34,7 @@ public class Harmful : MonoBehaviour
 
         if (other.gameObject.layer == LayerMask.NameToLayer("Player Hitbox"))
         {
-            other.gameObject.GetComponentInParent<PlayerMovement>().TakeDamage(transform.position.x);
+            other.gameObject.GetComponentInParent<PlayerMovement>().TakeDamage(transform.position.x, amountHeart);
         }
     }
 

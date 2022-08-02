@@ -617,7 +617,7 @@ public class PlayerMovement : MonoBehaviour
         damageaArea.enabled = false;
     }
     
-    public void TakeDamage(float positionX) //Cuando te pegan.
+    public void TakeDamage(float positionX, int amount) //Cuando te pegan.
     {
         if (InvincibilityOn() || GameManager.Instance.invincibility)
             return;
@@ -626,7 +626,7 @@ public class PlayerMovement : MonoBehaviour
         FlipPlayer();
 
         if(!GameManager.Instance.infiniteHealth)
-            playerData.healthPoints = Mathf.Clamp(playerData.healthPoints - 1, 0, 999);
+            playerData.healthPoints = Mathf.Clamp(playerData.healthPoints - amount, 0, 999);
         //playerData.healthPoints = Mathf.Clamp(playerData.healthPoints - 1, 0, 999);
 
 

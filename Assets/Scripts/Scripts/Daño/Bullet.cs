@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
         if(player != null)
         {
             Debug.Log("Hit!");
-            player.TakeDamage(transform.position.x);
+            player.TakeDamage(transform.position.x, 1);
         }
         DestroyBullet(0f);
     }
