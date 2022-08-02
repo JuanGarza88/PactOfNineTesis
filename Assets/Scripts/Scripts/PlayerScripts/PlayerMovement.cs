@@ -68,6 +68,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float recoverTime; //Tiempo de recuperacion, recuperas control
     [SerializeField] float invincibilityTime; //Tiempo que dura el periodo de inbunerabilidad.
     [SerializeField] float waitToRespawn; // Tiempo que tarda en aparecer el Game Over (en segundos).
+    [SerializeField] bool playerIsDead; // Tiempo que tarda en aparecer el Game Over (en segundos).
 
     public int JumpAllowed => jumpsAllowed + (playerData.extraJump ? 1 : 0);
 
@@ -155,11 +156,14 @@ public class PlayerMovement : MonoBehaviour
                     RangeAttack();
                     FlipPlayer();
                 }
+                
                 else
                 {
-                    rb.velocity = Vector2.zero;
+                    //rb.velocity = Vector2.zero;
+                    rb.velocity = new Vector2(0f, rb.velocity.y);
                 }
-               
+
+
             }
 
 
@@ -324,9 +328,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void Recover()
     {
-        recoverCounter = Mathf.Clamp(recoverCounter - Time.deltaTime, 0, 999);
-        if (recoverCounter == 0)
-            myAnimator.SetBool("Hurt", false);        
+        if (!playerIsDead)
+        {
+            recoverCounter = Mathf.Clamp(recoverCounter - Time.deltaTime, 0, 999);
+            if (recoverCounter == 0)
+                myAnimator.SetBool("Hurt", false);
+        }   
     }
 
     private void Invincibility()
@@ -744,12 +751,23 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator PlayerDied()
     {
+        playerIsDead = true;
         //gameObject.SetActive(false);
         canMove = false;
-        //-----------Death Animation aqui------------------
-        yield return new WaitForSeconds(waitToRespawn); // Tiempo en segundos que el Player sufre death animation y aparecerá la pantalla de Game Over.
+        if (FeetIsTouchingGround()) {
+            //-----------Death Animation aqui------------------
+            myAnimator.SetBool("Hurt", false);
+            myAnimator.SetBool("isDead", true);
 
-        UIController.instance.GameEnd();
+            yield return new WaitForSeconds(waitToRespawn); // Tiempo en segundos que el Player sufre death animation y aparecerá la pantalla de Game Over.
+
+            UIController.instance.GameEnd();
+        }
+        else
+        {
+            PlayerDied();
+        }
+
     }
 
 }
