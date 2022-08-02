@@ -23,9 +23,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NormalStage/NS-001.unity
     guid: 14fe46bdc499b4e4b92b28460d644c5c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NormalStage/NS-002.unity
     guid: 439248b41378b5c4ca4c98d3b2ca2586
+  - enabled: 1
+    path: Assets/Scenes/NormalStage/NS-002 EDUARDO.unity
+    guid: c2d9f97e26eb5b747a03e7c6ce00d1c1
   - enabled: 1
     path: Assets/Scenes/NormalStage/NS-003.unity
     guid: 40d51d6c78bbb554780432d82c2eb4a9

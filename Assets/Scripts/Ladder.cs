@@ -33,6 +33,12 @@ public class Ladder : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        player = FindObjectOfType<PlayerMovement>();
+        myCollider = GetComponent<Collider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
     void Update()
     {
         spriteRenderer.color = inactive;

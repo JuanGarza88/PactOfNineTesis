@@ -8,7 +8,7 @@ public class StageManager : MonoBehaviour
     [SerializeField] public Vector2 size;
     [SerializeField] Transform[] enterPonts;
     [SerializeField] MusicPlayer.ThemeName theme;
-    [SerializeField] BGMusicPlayer.ThemeName bgMusic;
+    
 
     GameManager gameManager;
 

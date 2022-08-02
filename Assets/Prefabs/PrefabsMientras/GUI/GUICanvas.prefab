@@ -2375,6 +2375,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 6075339390496575731}
+    - target: {fileID: 216498136092827770, guid: 04e40d5b82f70f7469d437d4b910e8b3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 276861244209867726, guid: 04e40d5b82f70f7469d437d4b910e8b3, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -2422,6 +2426,10 @@ PrefabInstance:
     - target: {fileID: 8184905411321833529, guid: 04e40d5b82f70f7469d437d4b910e8b3, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8184905411321833530, guid: 04e40d5b82f70f7469d437d4b910e8b3, type: 3}
+      propertyPath: m_SortingOrder
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8401459517232124650, guid: 04e40d5b82f70f7469d437d4b910e8b3, type: 3}
       propertyPath: m_Pivot.x

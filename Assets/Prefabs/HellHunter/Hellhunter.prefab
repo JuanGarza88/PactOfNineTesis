@@ -576,7 +576,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8150551946016860551}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.146338, y: 0.72453094, z: 0}
+  m_LocalPosition: {x: 10.006, y: 0.679, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3084019391160578856}
@@ -712,7 +712,7 @@ MonoBehaviour:
   damageThrowVertical: 12
   recoverTime: 0.35
   invincibilityTime: 1.5
-  waitToRespawn: 2
+  waitToRespawn: 1
   canMove: 1
   myAnimator: {fileID: 0}
   direction: 0
