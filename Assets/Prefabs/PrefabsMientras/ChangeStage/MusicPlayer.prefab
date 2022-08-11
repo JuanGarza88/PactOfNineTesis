@@ -49,10 +49,10 @@ MonoBehaviour:
   themeMenu: {fileID: 8300000, guid: 9461101d67427da489bea20da67cc2ef, type: 3}
   themeField: {fileID: 8300000, guid: 90b237e9dd4018446a9a5fb871039b6c, type: 3}
   themeCave: {fileID: 8300000, guid: 4cf148e4233d13b4f95f5cab65a675b6, type: 3}
-  themeCastle: {fileID: 8300000, guid: 11dc45376c0fa374fb16356d21f82ed0, type: 3}
-  themeTower: {fileID: 8300000, guid: 43be7ae07ff9d624b843a059ea559c33, type: 3}
-  themeHell: {fileID: 8300000, guid: 067f2015e39f13543a603017430788ae, type: 3}
-  themeBoss: {fileID: 8300000, guid: fce9bf15317aa4f48960ed9e375e18a2, type: 3}
+  themeCastle: {fileID: 8300000, guid: 6dcca3618028762499fbc040179fabd0, type: 3}
+  themeTower: {fileID: 8300000, guid: bd5004cba019d6d4fa33435a96dec050, type: 3}
+  themeHell: {fileID: 8300000, guid: b08894e8f22888543a5d40d948672a48, type: 3}
+  themeBoss: {fileID: 8300000, guid: 10120b72bb1eb5b4fb8f90996bd530e5, type: 3}
   themeItem: {fileID: 8300000, guid: 50261f3802a756d46b3496aba7d1970b, type: 3}
   themeDead: {fileID: 8300000, guid: 55ec88dad628cb347a6582ee31dd0b91, type: 3}
   AmbienceMusic01: {fileID: 8300000, guid: 453fbbbc515bfe94e80b7be3b737a92e, type: 3}

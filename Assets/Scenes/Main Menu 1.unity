@@ -1215,6 +1215,10 @@ PrefabInstance:
       value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 4704122042652152870, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
+      propertyPath: invincibility
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4704122042652152870, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
       propertyPath: savingDisabled
       value: 0
       objectReference: {fileID: 0}
@@ -1717,25 +1721,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7090162923890254972, guid: 846505d640df07c49bf4febb86cec4a6, type: 3}
-      propertyPath: themeHell
-      value: 
-      objectReference: {fileID: 8300000, guid: b08894e8f22888543a5d40d948672a48, type: 3}
-    - target: {fileID: 7090162923890254972, guid: 846505d640df07c49bf4febb86cec4a6, type: 3}
       propertyPath: themeMenu
       value: 
       objectReference: {fileID: 8300000, guid: 5137b5d41edf95e4db499b3f91f7e534, type: 3}
-    - target: {fileID: 7090162923890254972, guid: 846505d640df07c49bf4febb86cec4a6, type: 3}
-      propertyPath: AmbienceMusic01
-      value: 
-      objectReference: {fileID: 8300000, guid: 453fbbbc515bfe94e80b7be3b737a92e, type: 3}
-    - target: {fileID: 7090162923890254972, guid: 846505d640df07c49bf4febb86cec4a6, type: 3}
-      propertyPath: AmbienceMusic02
-      value: 
-      objectReference: {fileID: 8300000, guid: edb55a64a4d62c545bb6da6bfb1d14f4, type: 3}
-    - target: {fileID: 7090162923890254972, guid: 846505d640df07c49bf4febb86cec4a6, type: 3}
-      propertyPath: AmbienceMusic03
-      value: 
-      objectReference: {fileID: 8300000, guid: 810bfceb3dabab04ea8eae77c2d92da6, type: 3}
     - target: {fileID: 7376408161746369926, guid: 846505d640df07c49bf4febb86cec4a6, type: 3}
       propertyPath: m_Name
       value: MusicPlayer

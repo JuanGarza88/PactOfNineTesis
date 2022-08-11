@@ -161,7 +161,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/WaterStage/WS-013.unity
     guid: 7ebd068b7dff5844ca97d047da54a358
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/WaterStage/WS-014.unity
     guid: 023fbf8c68aab174884945ba8bd28c37
   - enabled: 1
