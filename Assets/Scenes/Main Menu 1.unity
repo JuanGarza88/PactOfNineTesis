@@ -1167,10 +1167,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3733781354120923426, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
-      propertyPath: baseHealthPoints
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3733781354120923426, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
       propertyPath: healthUpgrades.Array.size
       value: 0
       objectReference: {fileID: 0}

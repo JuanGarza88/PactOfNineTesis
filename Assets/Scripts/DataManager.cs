@@ -77,8 +77,10 @@ public class DataManager : MonoBehaviour
 
         switch (playerData.checkpoint)//Es lo mismo que los if de abajo pero no los borres por si un dia se te va la onda va y los tomes de ref.
         {
-            case 0: gameManager.enterPoint = 0; SceneManager.LoadScene("NS-001"); break;
-            case 1: gameManager.enterPoint = 0; SceneManager.LoadScene("NS-007"); break;
+            case 0: gameManager.enterPoint = 0; SceneManager.LoadScene("NS-001"); break; // id 0
+            case 1: gameManager.enterPoint = 0; SceneManager.LoadScene("NS-007"); break; // id 1 -
+            case 2: gameManager.enterPoint = 0; SceneManager.LoadScene("FS-002"); break; // id 2 -
+            case 3: gameManager.enterPoint = 0; SceneManager.LoadScene("FS-011"); break; // id 3 -
         }
 
         //if(playerData.checkpoint == 0)
