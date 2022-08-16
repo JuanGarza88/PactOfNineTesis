@@ -51,7 +51,7 @@ MonoBehaviour:
   stageObjectsVisible: 0
   ladderVisible: 0
   savingDisabled: 0
-  invincibility: 1
+  invincibility: 0
   infiniteHealth: 0
   screenSize: {x: 15, y: 10}
   cameraOffset: 1.5
@@ -110,7 +110,7 @@ MonoBehaviour:
   healthUpgrades: 000000000000000000000000
   ammoUpgrades: 0000000000000000000000
   weaponMeleeUpgrades: 010000
-  weaponRangeUpgrades: 000000
+  weaponRangeUpgrades: 010000
   keys: 0000000000
 --- !u!114 &7581154802177836886
 MonoBehaviour:
