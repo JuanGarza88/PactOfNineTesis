@@ -165,7 +165,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
-  amountHeart: 0
+  amountHeart: 1
 --- !u!212 &7357310136639151443
 SpriteRenderer:
   m_ObjectHideFlags: 0

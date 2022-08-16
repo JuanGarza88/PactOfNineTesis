@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
-  amountHeart: 0
+  amountHeart: 1
 --- !u!50 &3841128278743146785
 Rigidbody2D:
   serializedVersion: 4

@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -99,6 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 
   isActive: 0
+  leverElement: 0
   activeSprite: {fileID: 5207117429831932417, guid: 64962885319b20e4992da3a7dcb90be2, type: 3}
   inactiveSprite: {fileID: -1494352897237206093, guid: 64962885319b20e4992da3a7dcb90be2, type: 3}
 --- !u!50 &5727187707276286608

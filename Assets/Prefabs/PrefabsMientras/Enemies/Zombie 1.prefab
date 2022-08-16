@@ -236,6 +236,7 @@ MonoBehaviour:
   hitbox: {fileID: 5675780177625863629}
   healthDropPrefab: {fileID: 1831338636330037262, guid: 7a43ae725303f8c4f9bc172925e46d16, type: 3}
   ammoDropPrefab: {fileID: 1831338636330037262, guid: 2a8c224a637e7604494b1c5a9e242add, type: 3}
+  isBoss: 0
 --- !u!114 &5053585956301623727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,6 +250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
+  amountHeart: 1
 --- !u!212 &7357310136639151443
 SpriteRenderer:
   m_ObjectHideFlags: 0
