@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] bool playerIsDead; // Tiempo que tarda en aparecer el Game Over (en segundos).
 
     public int JumpAllowed => jumpsAllowed + (playerData.extraJump ? 1 : 0);
-
+    public bool IsDead => playerIsDead;
     public event Action<int> OnPowerSwitched;
 
 
@@ -131,7 +131,7 @@ public class PlayerMovement : MonoBehaviour
         Recover();
         Invincibility();
 
-        SwitchPowers(); //poderes jaj
+        SwitchPowers(); //poderes 
 
 
         if (!(GroundAttack() || AirAttack()))
@@ -650,7 +650,7 @@ public class PlayerMovement : MonoBehaviour
 
         SFXManager.Instance.PlaySFX(SFXManager.SFXName.PlayerHurt); //Cambiar audio o sea el sonido.
 
-        if(playerData.healthPoints <= 0)
+        if (playerData.healthPoints <= 0 && !playerIsDead) 
         {
             //Se activa el EndGame function para activar la Death animation y la pantalla de Game Over
             StartCoroutine(PlayerDied());
@@ -682,8 +682,8 @@ public class PlayerMovement : MonoBehaviour
         if(other.gameObject.layer == LayerMask.NameToLayer("Target")) //donde golpeamos
         {
             Debug.Log(transform.lossyScale.x * -1);
-            if (other.GetComponentInParent<Killable>())
-                other.GetComponentInParent<Killable>().ProcessDamage(playerData.meleeDamage, Mathf.Sign(transform.lossyScale.x * -1));
+            if (other.GetComponentInParent<IDamagable>()!= null)
+                other.GetComponentInParent<IDamagable>().ProcessDamage(playerData.meleeDamage, Mathf.Sign(transform.lossyScale.x * -1));
 
         }
     }
@@ -754,19 +754,18 @@ public class PlayerMovement : MonoBehaviour
         playerIsDead = true;
         //gameObject.SetActive(false);
         canMove = false;
-        if (FeetIsTouchingGround()) {
-            //-----------Death Animation aqui------------------
-            myAnimator.SetBool("Hurt", false);
-            myAnimator.SetBool("isDead", true);
+        rb.velocity = Vector2.zero;
+        while (!FeetIsTouchingGround())
+            yield return null;
 
-            yield return new WaitForSeconds(waitToRespawn); // Tiempo en segundos que el Player sufre death animation y aparecerá la pantalla de Game Over.
+        //-----------Death Animation aqui------------------
+        myAnimator.SetBool("Hurt", false);
+        myAnimator.SetBool("isDead", true);
 
-            UIController.instance.GameEnd();
-        }
-        else
-        {
-            PlayerDied();
-        }
+        yield return new WaitForSeconds(waitToRespawn); // Tiempo en segundos que el Player sufre death animation y aparecerá la pantalla de Game Over.
+
+        UIController.instance.GameEnd();
+
 
     }
 

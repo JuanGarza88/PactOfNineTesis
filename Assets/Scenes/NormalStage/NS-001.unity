@@ -13888,14 +13888,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManager
       objectReference: {fileID: 0}
-    - target: {fileID: 4704122042652152870, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
-      propertyPath: invincibility
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4704122042652152870, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
-      propertyPath: savingDisabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4704122042652152871, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
       propertyPath: m_RootOrder
       value: 0

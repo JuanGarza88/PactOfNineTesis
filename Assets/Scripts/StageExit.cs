@@ -41,7 +41,7 @@ public class StageExit : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
        // GoToNextStage(nextStageName);
-        if(!playerExiting)
+        if(!playerExiting && !player.IsDead)
         {
             player.canMove = false;
             StartCoroutine(UseDoorCo());

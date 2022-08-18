@@ -4510,7 +4510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7786938567099630135, guid: f15e80f689db08347964aa6ceedfd23f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.36
+      value: 12.71
       objectReference: {fileID: 0}
     - target: {fileID: 7786938567099630135, guid: f15e80f689db08347964aa6ceedfd23f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -5767,10 +5767,6 @@ PrefabInstance:
     - target: {fileID: 4704122042652152865, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
       propertyPath: m_Name
       value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 4704122042652152870, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
-      propertyPath: invincibility
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4704122042652152870, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
       propertyPath: useTestValues

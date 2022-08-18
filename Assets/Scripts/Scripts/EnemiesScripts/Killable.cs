@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Killable : MonoBehaviour
+public class Killable : MonoBehaviour, IDamagable
 {
     [SerializeField] int healthPoints;
     [SerializeField] float hitTime, deadTime, changeTime;

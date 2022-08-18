@@ -46,9 +46,9 @@ public class PlayerProjectile : MonoBehaviour
         if (other.gameObject.layer == LayerMask.NameToLayer("Target")) //donde golpeamos
         { 
            // Debug.Log(transform.lossyScale.x * -1);
-            if (other.GetComponentInParent<Killable>())
+            if (other.GetComponentInParent<IDamagable>() != null)
             {
-                other.GetComponentInParent<Killable>().ProcessDamage(damage, Mathf.Sign(transform.lossyScale.x * -1));
+                other.GetComponentInParent<IDamagable>().ProcessDamage(damage, Mathf.Sign(transform.lossyScale.x * -1));
                 Hit();
             }
 

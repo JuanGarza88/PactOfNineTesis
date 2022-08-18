@@ -1529,20 +1529,18 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 12800000, guid: 652f7165b7c30ab46af6c4aad90a639b, type: 2}
-    m_FontSize: 16
+    m_FontSize: 13
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 0
+    m_MinSize: 10
     m_MaxSize: 40
-    m_Alignment: 4
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Credits
-
-'
+  m_Text: Credits
 --- !u!222 &1122687535
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2340,14 +2338,6 @@ PrefabInstance:
     - target: {fileID: 4704122042652152865, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
       propertyPath: m_Name
       value: GameManager
-      objectReference: {fileID: 0}
-    - target: {fileID: 4704122042652152870, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
-      propertyPath: invincibility
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4704122042652152870, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
-      propertyPath: savingDisabled
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4704122042652152871, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
       propertyPath: m_RootOrder
