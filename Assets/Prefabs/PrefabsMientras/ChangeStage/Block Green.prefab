@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1025537491230667521}
   - component: {fileID: 1025537491230667522}
   m_Layer: 6
-  m_Name: Block 1
+  m_Name: Block Green
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: Green
-  isActive: 0
+  isActive: 1
   activeSprite: {fileID: 1515622694917723629, guid: 2569269175b7bd14f8299f1c3bf54f44, type: 3}
   inactiveSprite: {fileID: 1503016370545623098, guid: 2569269175b7bd14f8299f1c3bf54f44, type: 3}
 --- !u!61 &1025537491230667522

@@ -97,7 +97,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   id: Purple
-  isActive: 0
+  isActive: 1
   activeSprite: {fileID: -8506558392696655332, guid: 2569269175b7bd14f8299f1c3bf54f44, type: 3}
   inactiveSprite: {fileID: 6608634889621467271, guid: 2569269175b7bd14f8299f1c3bf54f44, type: 3}
 --- !u!61 &1025537491230667522

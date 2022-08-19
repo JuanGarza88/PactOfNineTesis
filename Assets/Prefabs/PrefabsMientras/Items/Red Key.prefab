@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1831338636330037263}
   - component: {fileID: 1831338636330037250}
   m_Layer: 16
-  m_Name: Yellow Red
+  m_Name: Red Key
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

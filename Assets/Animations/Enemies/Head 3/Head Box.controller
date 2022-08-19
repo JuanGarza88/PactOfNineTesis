@@ -81,7 +81,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Head 3
+  m_Name: Head Box
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Speed
@@ -110,10 +110,10 @@ AnimatorController:
     m_Motions:
     - serializedVersion: 2
       m_State: {fileID: -6432019857098597313}
-      m_Motion: {fileID: 7400000, guid: 38021d9995f9ce54bba3e3a337e34d30, type: 2}
+      m_Motion: {fileID: 7400000, guid: d04f330eb95873d49b3457fedf878915, type: 2}
     - serializedVersion: 2
       m_State: {fileID: -6678786733558475104}
-      m_Motion: {fileID: 7400000, guid: d04f330eb95873d49b3457fedf878915, type: 2}
+      m_Motion: {fileID: 7400000, guid: 03bcaea27eecd3a469330828f1aa71a7, type: 2}
     m_Behaviours: []
     m_BlendingMode: 0
     m_SyncedLayerIndex: 0

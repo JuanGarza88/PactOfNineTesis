@@ -93,11 +93,11 @@ public class Item : MonoBehaviour
         {
             case "Health Drop": playerData.Heal(); break;
             case "Ammo Drop": playerData.AddAmmo(); break;
-            case "Key" when id == 0: playerData.UpdateUpgrades(itemName, id); UnlockBlocks("Green"); break;
-            case "Key" when id == 1: playerData.UpdateUpgrades(itemName, id); UnlockBlocks("Yellow"); break;
-            case "Key" when id == 2: playerData.UpdateUpgrades(itemName, id); UnlockBlocks("Red"); break;
-            case "Key" when id == 3: playerData.UpdateUpgrades(itemName, id); UnlockBlocks("Purple"); break;
-            case "Key" when id == 4: playerData.UpdateUpgrades(itemName, id); UnlockBlocks("White"); break;
+            case "Key" when id == 0: playerData.UpdateUpgrades(itemName, id); UnlockBlocks("Green"); break; //0
+            case "Key" when id == 1: playerData.UpdateUpgrades(itemName, id); UnlockBlocks("Yellow"); break; //1
+            case "Key" when id == 2: playerData.UpdateUpgrades(itemName, id); UnlockBlocks("Red"); break; //2
+            case "Key" when id == 3: playerData.UpdateUpgrades(itemName, id); UnlockBlocks("Purple"); break; //3
+            case "Key" when id == 4: playerData.UpdateUpgrades(itemName, id); UnlockBlocks("White"); break; //4
             default: playerData.UpdateUpgrades(itemName, id); break;
         }
 

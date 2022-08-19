@@ -11,9 +11,9 @@ public class MusicPlayer : MonoBehaviour
     [SerializeField] AudioClip themeMenu;
     [SerializeField] AudioClip themeField; //se modificara para cada stage de normal, agua y fuego, ya depende otras areas dependiendo el tiempo...
     [SerializeField] AudioClip themeCave;
-    [SerializeField] AudioClip themeCastle;
-    [SerializeField] AudioClip themeTower;
-    [SerializeField] AudioClip themeHell;
+    [SerializeField] AudioClip themeCastle; // Fuego
+    [SerializeField] AudioClip themeTower; //Agua
+    [SerializeField] AudioClip themeHell;  //Normal Stage
     [SerializeField] AudioClip themeBoss;
     [SerializeField] AudioClip themeItem;
     [SerializeField] AudioClip themeDead;
