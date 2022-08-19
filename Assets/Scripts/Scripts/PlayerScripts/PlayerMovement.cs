@@ -559,7 +559,8 @@ public class PlayerMovement : MonoBehaviour
             if (myAnimator.GetBool("Jumping"))
                 myAnimator.Play("Jump Attack Range", 0, 0f);
             else
-                myAnimator.Play("Attack Range", 0, 0f);
+                //myAnimator.Play("Attack Range", 0, 0f); // Se cambio por la version 2
+                myAnimator.Play("Attack Range v2", 0, 0f);
         }
     }
 
