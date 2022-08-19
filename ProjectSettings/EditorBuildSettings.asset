@@ -92,9 +92,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/FireStage/FS-007.unity
     guid: abf2163879fdb284488e611e92a5fa7f
-  - enabled: 1
-    path: Assets/Scenes/FireStage/FS-007 1.unity
-    guid: 126344deb7ec46948b1cf56d2e0e3664
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/FireStage/FS-008.unity
     guid: 75c3fd6d7509bee44b5616692582d19b
@@ -117,6 +117,9 @@ EditorBuildSettings:
     path: Assets/Scenes/FireStage/FS-014.unity
     guid: 10057e3e2846e974db7c4298f16b9453
   - enabled: 1
+    path: Assets/Scenes/BossStages/FSBS-001.unity
+    guid: 9dfdab424707ad94fa3cefdec2d17443
+  - enabled: 0
     path: Assets/Scenes/FireStage/FS-015.unity
     guid: 77e528f4d1e51ca4dab78a6292eff20d
   - enabled: 1
