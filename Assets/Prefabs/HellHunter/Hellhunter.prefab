@@ -257,7 +257,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2384644380053744989}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.47800002, y: -0.051999986, z: 0}
+  m_LocalPosition: {x: 0.7, y: -0.198, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 5657866744073560528}
@@ -713,6 +713,7 @@ MonoBehaviour:
   recoverTime: 0.35
   invincibilityTime: 1.5
   waitToRespawn: 1
+  playerIsDead: 0
   canMove: 1
   myAnimator: {fileID: 0}
   direction: 0

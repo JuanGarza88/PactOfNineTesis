@@ -8475,6 +8475,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 885728199567123834, guid: d431e0ff7393a514a8062db9a2e53f6a, type: 3}
+      propertyPath: playerPrefab
+      value: 
+      objectReference: {fileID: 8137719611329882288, guid: a7aaf76219d20154baf79009c7bf81dc, type: 3}
+    - target: {fileID: 885728199567123834, guid: d431e0ff7393a514a8062db9a2e53f6a, type: 3}
       propertyPath: enterPonts.Array.size
       value: 4
       objectReference: {fileID: 0}
