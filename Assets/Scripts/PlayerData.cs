@@ -37,6 +37,10 @@ public class PlayerData : MonoBehaviour
 
 
     public bool greenKeyObtained;
+    public bool yellowKeyObtained;
+    public bool redKeyObtained;
+    public bool purpleKeyObtained;
+    public bool whiteKeyObtained;
 
     public int healthPointsMax;
     public int healthPoints;
@@ -100,6 +104,10 @@ public class PlayerData : MonoBehaviour
         meleeDamage = meleeLvl * baseMeleeDamage;
 
         greenKeyObtained = keys[0];
+        yellowKeyObtained = keys[1];
+        redKeyObtained = keys[2];
+        purpleKeyObtained = keys[3];
+        whiteKeyObtained = keys[4];
 
         if (FindObjectOfType<PlayerMovement>())
             FindObjectOfType<PlayerMovement>().UpdateAnimations();

@@ -359,7 +359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 8137719611329882288}
-  normalSpite: {fileID: 21300000, guid: 1847e933844fdb24fb361421d811ad57, type: 3}
+  normalSpite: {fileID: -7573354855677281409, guid: ec8e37cba368d4c4b9cf87a5337c6834, type: 3}
   FireSpite: {fileID: 21300000, guid: d538cf68cb44f13428133ae925b51a0d, type: 3}
   waterSpite: {fileID: 21300000, guid: d28ece664681c9147a05e5c53bcaceb7, type: 3}
   normalElement: {fileID: 5775549557070353975, guid: 1d452b53334c0c7408ff84904d2468d9, type: 3}
@@ -576,7 +576,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8150551946016860551}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.006, y: 0.679, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3084019391160578856}

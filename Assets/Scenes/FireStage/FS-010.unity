@@ -8885,7 +8885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3578527679426576965, guid: b87fcc2130cc36948bd24a5b320d6f15, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 25.28
+      value: 24.39
       objectReference: {fileID: 0}
     - target: {fileID: 3578527679426576965, guid: b87fcc2130cc36948bd24a5b320d6f15, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9373,6 +9373,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1999275351}
     m_Modifications:
+    - target: {fileID: 2225119562402597148, guid: 59a5d79d0e344424f95b08277a7a2451, type: 3}
+      propertyPath: walkSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3809809372071123516, guid: 59a5d79d0e344424f95b08277a7a2451, type: 3}
       propertyPath: m_Name
       value: Mini Cutulu (2)
@@ -9383,7 +9387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7786938567099630135, guid: 59a5d79d0e344424f95b08277a7a2451, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 23.78
+      value: 23.47
       objectReference: {fileID: 0}
     - target: {fileID: 7786938567099630135, guid: 59a5d79d0e344424f95b08277a7a2451, type: 3}
       propertyPath: m_LocalPosition.y
@@ -9420,6 +9424,10 @@ PrefabInstance:
     - target: {fileID: 7786938567099630135, guid: 59a5d79d0e344424f95b08277a7a2451, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8398819939595978583, guid: 59a5d79d0e344424f95b08277a7a2451, type: 3}
+      propertyPath: direction
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59a5d79d0e344424f95b08277a7a2451, type: 3}
@@ -9901,7 +9909,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2312358699448709891, guid: ab904b8fa97c5ed4ebb2c8aa60089669, type: 3}
       propertyPath: m_LocalScale.y
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2312358699448709891, guid: ab904b8fa97c5ed4ebb2c8aa60089669, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11454,6 +11462,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3967064257623010133, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
+      propertyPath: healthUpgrades.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4704122042652152865, guid: 844fa131de091fb4fb181b08ec0e72bd, type: 3}
       propertyPath: m_Name
       value: GameManager

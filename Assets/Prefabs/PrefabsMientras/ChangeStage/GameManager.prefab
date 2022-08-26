@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameSpeed: 1
-  useTestValues: 1
+  useTestValues: 0
   stageObjectsVisible: 0
   ladderVisible: 0
   savingDisabled: 0
@@ -85,6 +85,10 @@ MonoBehaviour:
   extraJump: 0
   switchPower: 0
   greenKeyObtained: 0
+  yellowKeyObtained: 0
+  redKeyObtained: 0
+  purpleKeyObtained: 0
+  whiteKeyObtained: 0
   healthPointsMax: 0
   healthPoints: 0
   ammoMax: 0

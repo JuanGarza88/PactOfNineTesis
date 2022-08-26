@@ -27,6 +27,42 @@ public class Block : MonoBehaviour
                 SetActive(false);
             }
         }
+
+        playerData = FindObjectOfType<PlayerData>();
+        if (id == "Yellow")
+        {
+            if (playerData.yellowKeyObtained)
+            {
+                SetActive(false);
+            }
+        }
+
+        playerData = FindObjectOfType<PlayerData>();
+        if (id == "Red")
+        {
+            if (playerData.redKeyObtained)
+            {
+                SetActive(false);
+            }
+        }
+
+        playerData = FindObjectOfType<PlayerData>();
+        if (id == "Purple")
+        {
+            if (playerData.purpleKeyObtained)
+            {
+                SetActive(false);
+            }
+        }
+
+        playerData = FindObjectOfType<PlayerData>();
+        if (id == "White")
+        {
+            if (playerData.whiteKeyObtained)
+            {
+                SetActive(false);
+            }
+        }
     }
 
     public void Unlock()
